@@ -1,0 +1,13 @@
+:root{
+    --full-width:100%;
+    --full-height:100%;
+}
+
+.video-div {
+    height:var(--full-height);
+    width: var(--full-width);
+}
+.video-div > iframe{
+    height:var(--full-height);
+    width: var(--full-width);
+}

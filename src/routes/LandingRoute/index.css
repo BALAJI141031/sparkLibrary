@@ -1,0 +1,62 @@
+.main-div{
+    width: 100%;
+    display: grid;
+    grid-gap:20px;
+    grid-template-areas:
+    "hero"
+    "featuredVideos"
+    "mostWatchedVideos";   
+}
+
+
+
+.hero{
+  grid-area:hero;
+  display: grid;
+}
+.featured-videos-section{
+    grid-area:featuredVideos;   
+}
+.featured-videos{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+}
+.most-viewed-videos{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+
+}
+
+.most-viewed-div{
+    grid-area: mostWatchedVideos;
+    grid-gap: 10px;
+}
+
+.overlap{
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+}
+.video{
+    height: 100%;
+}
+.hero-banner{
+    align-self:center;
+    justify-self: center;  
+}
+
+.featured-video{
+    display: grid;
+    margin:10px 0px 10px 10px       
+}
+
+.res-image{
+    width:100%
+}
+
+.featured-banner{
+    align-self:end;
+    justify-self: center;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    padding-bottom:5px;  
+}

@@ -1,0 +1,21 @@
+.video-card{
+    margin:10px 0px 10px 10px
+}
+
+.text-margin{
+    margin:5px
+}
+
+.mr-r{
+    margin-right: 10px;
+}
+
+.btn-cta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    font-size: 1.2rem;
+    padding:5px
+
+}

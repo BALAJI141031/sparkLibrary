@@ -1,0 +1,51 @@
+.search-bar{
+    padding: 0.3rem;
+    border-radius:4px;
+    width: 60%;
+}
+.navbar{
+    position:relative;
+    z-index: 1;
+}
+
+.btn-m {
+    margin-left:15%
+}
+
+.showSidebar{
+    position: absolute;
+    right: 0%;
+    z-index:12;
+    color: brown;
+    background-color: burlywood;
+    width: 12rem;
+    height:100vh;
+    animation-duration: 10s;
+    animation-name: slidein;
+}
+.hideSidebar{
+    display: none;
+}
+
+.sidebar-section{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-left: 10px;
+    
+}
+.sidebar-section > p{
+    margin:7px 10px;
+}
+
+@keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 12rem;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 12rem;
+    }
+  }
