@@ -9,7 +9,7 @@ function LandingRoute() {
           <Video />
         </div>
         <div className="hero-banner overlap">
-          <HeroBanner />
+          <HeroBanner hero={"hero"} />
         </div>
       </div>
       <div className="featured-videos-section">
@@ -54,7 +54,7 @@ function LandingRoute() {
         </div>
       </div>
       <div className="most-viewed-div">
-        <h2>Most Streamed Videos</h2>
+        <h2 className="text-align-center">Most Streamed Videos</h2>
         <div className="most-viewed-videos">
           <VideoCard />
           <VideoCard />

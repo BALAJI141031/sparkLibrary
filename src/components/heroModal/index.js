@@ -1,8 +1,8 @@
 import "./index.css";
 
-function HeroBanner() {
+function HeroBanner({ hero }) {
   return (
-    <div className="banner">
+    <div className={hero ? "banner hero-banner-width" : "banner"}>
       <h1 className="heading-margin">Spark Library</h1>
       <h2 className="heading-margin">
         Dedicated International Relations Niche To Civils Aspirant's{" "}
