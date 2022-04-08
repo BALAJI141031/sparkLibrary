@@ -19,11 +19,13 @@
 }
 .featured-videos{
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+    justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(350px, 400px) );
 }
 .most-viewed-videos{
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+    justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 300px) );
 
 }
 
@@ -46,6 +48,7 @@
 
 .featured-video{
     display: grid;
+    /* grid-template-columns: repeat (200px,120px ); */
     margin:10px 0px 10px 10px       
 }
 
@@ -54,7 +57,7 @@
 }
 
 .featured-banner{
-    align-self:end;
+    align-self:center   ;
     justify-self: center;
     margin-left: 5rem;
     margin-right: 5rem;
