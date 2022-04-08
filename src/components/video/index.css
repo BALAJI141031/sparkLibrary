@@ -4,10 +4,17 @@
 }
 
 .video-div {
-    height:var(--full-height);
-    width: var(--full-width);
+    width:100%; 
 }
 .video-div > iframe{
-    height:var(--full-height);
-    width: var(--full-width);
+    height:50vh;
+    width:100%; 
+}
+
+@media screen and (min-width:768px) {
+    .video-div > iframe{
+        height:70vh;
+        width:100%;
+        
+    }
 }

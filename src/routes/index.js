@@ -1,3 +1,4 @@
 import { LandingRoute } from "./LandingRoute";
 import VideoListingRoute from "./videoListingRoute";
-export { LandingRoute, VideoListingRoute };
+import PlayVideo from "./playVideoRoute";
+export { LandingRoute, VideoListingRoute, PlayVideo };
