@@ -1,5 +1,5 @@
 import "./index.css";
-import { GrHome, GrClose } from "../../icons";
+import { GrHome, GrClose, GrMenu } from "../../icons";
 import { useState } from "react";
 
 function Navbar() {
@@ -20,11 +20,11 @@ function Navbar() {
         />
         {sidebar ? (
           <div class="buger-div" onClick={toggleSidebar}>
-            <GrClose className="icon-lg" />
+            <GrClose className="close-icon" />
           </div>
         ) : (
           <div class="buger-div" onClick={toggleSidebar}>
-            <i class="fas fa-bars icon-lg"></i>
+            <GrMenu className="close-icon" />
           </div>
         )}
       </div>
