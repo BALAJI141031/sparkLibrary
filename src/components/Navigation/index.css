@@ -6,10 +6,16 @@
 .navbar{
     position:relative;
     z-index: 1;
+    padding-bottom:10px;
 }
 
 .btn-m {
     margin-left:15%
+}
+
+.close-icon{
+    height: 32px;
+    width: 28px;
 }
 
 .showSidebar{
@@ -18,7 +24,7 @@
     z-index:12;
     color: brown;
     background-color: burlywood;
-    width: 12rem;
+    width: 15rem;
     height:100vh;
     animation-duration: 10s;
     animation-name: slidein;
@@ -49,3 +55,4 @@
       width: 12rem;
     }
   }
+
