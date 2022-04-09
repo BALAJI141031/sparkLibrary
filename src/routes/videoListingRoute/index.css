@@ -11,12 +11,18 @@
     padding: 10px;
     margin: 5px;
     border-radius: 8px;
+    cursor: pointer;
 
+}
+
+.category:hover{
+    color: cyan;
 }
 
 .videos{
    display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+   justify-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 300px) );
 }
 
 @media screen and (min-width:500px) {
