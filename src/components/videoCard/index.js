@@ -1,25 +1,37 @@
 import "./index.css";
-import { BsFillCaretRightFill, FaRegBell } from "../../icons";
-function VideoCard() {
+import { BsFillCaretRightFill } from "../../icons";
+function VideoCard(
+  { video } = {
+    title: "vox",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/FQ4hvLqNfqo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBUgIwsS4JVatmPy_I_1AcDEZnm7A",
+    creator: "jonny Harris",
+    listens: "2.5M",
+    releasedDate: "september,2021",
+    GIF: "",
+  }
+) {
+  console.log(video, "rendering video");
+  const { title, thumbnailImg, creator, listens, releasedDate, GIF } = video;
+
   return (
-    <div className="video-card-badge">
-      <div className="video-card">
-        <div>
-          <img
-            src="https://i.ytimg.com/vi/FQ4hvLqNfqo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBUgIwsS4JVatmPy_I_1AcDEZnm7A"
-            alt="most-viewed-thumbnail"
-            className="res-image"
-          />
-        </div>
-        <strong className="text-margin">Vox videos</strong>
-        <p className="text-margin">By jonny Harris </p>
-        <p className="text-margin">1.5M streams | september,1991</p>
-        <button className="btn-cta">
-          <BsFillCaretRightFill className="mr-r" />
-          Watch Now
-        </button>
+    <div className="video-card">
+      <div>
+        <img
+          src={thumbnailImg}
+          alt="most-viewed-thumbnail"
+          className="res-image"
+        />
       </div>
-      <FaRegBell className="video-badge icon-lg" />
+      <strong className="text-margin">{title}</strong>
+      <p className="text-margin">By {creator}</p>
+      <p className="text-margin">
+        {listens} streams|{releasedDate}
+      </p>
+      <button className="btn-cta">
+        <BsFillCaretRightFill className="mr-r" />
+        Watch Now
+      </button>
     </div>
   );
 }

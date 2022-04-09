@@ -1,5 +1,6 @@
 import "./index.css";
 import { Video, VideoCard } from "../../components";
+import { useVideoListing, usePlayVideo } from "../../customHooks";
 import {
   BiLike,
   BiDislike,
@@ -7,11 +8,15 @@ import {
   CgPlayListAdd,
   FaRegBell,
 } from "../../icons";
+
 export default function PlayVideo() {
+  const { filteredVideos } = useVideoListing();
+  const { videoUrl } = usePlayVideo();
+
   return (
     <div className="play-video-section">
       <div className="play-video">
-        <Video />
+        <Video videoUrl={videoUrl} />
         <div className="description-analytics-div">
           <div className="desciption">
             <h5>Control The Choke Point:How The US Stole The Panama Canal</h5>
@@ -72,16 +77,11 @@ export default function PlayVideo() {
         <h2 className="heading-m">Recomended Videos</h2>
         <div className="recomended-videos">
           {/* here video card making width more than 100% */}
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {filteredVideos.map((recomendedVideo) => (
+            <div>
+              <VideoCard video={recomendedVideo} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
