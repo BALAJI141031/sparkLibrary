@@ -1,5 +1,6 @@
 import "./index.css";
 import { Video, VideoCard } from "../../components";
+import { useVideoListing } from "../../customHooks";
 import {
   BiLike,
   BiDislike,
@@ -8,6 +9,8 @@ import {
   FaRegBell,
 } from "../../icons";
 export default function PlayVideo() {
+  const { filteredVideos } = useVideoListing();
+  console.log("checking for this", filteredVideos);
   return (
     <div className="play-video-section">
       <div className="play-video">
@@ -72,16 +75,11 @@ export default function PlayVideo() {
         <h2 className="heading-m">Recomended Videos</h2>
         <div className="recomended-videos">
           {/* here video card making width more than 100% */}
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
+          {filteredVideos.map((recomendedVideo) => (
+            <div>
+              <VideoCard video={recomendedVideo} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

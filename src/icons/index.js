@@ -16,6 +16,7 @@ export {
   MdOutlineWatchLater,
   CgPlayListAdd,
   FaRegBell,
+  GrMenu,
 };
 
-export { BiSearchAlt2, BsFillCaretRightFill, GrHome, GrClose, GrMenu };
+

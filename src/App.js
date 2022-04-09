@@ -9,7 +9,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingRoute />} />
         <Route path="/videos" element={<VideoListingRoute />} />
-
         <Route path="/play-videos" element={<PlayVideo />} />
       </Routes>
     </div>

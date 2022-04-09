@@ -34,7 +34,7 @@ export default function VideoListingRoute() {
   // playing video
   const playVideo = (video) => {
     console.log("trying to navigate");
-    // navigate("/");
+    navigate("/play-videos");
   };
 
   console.log(filteredVideos, "checking for videos to render on listing page");
