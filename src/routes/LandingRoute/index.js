@@ -42,11 +42,12 @@ function LandingRoute() {
     featuredCategories,
     mostStreamedVideos
   );
+
   return (
     <main className="main-div">
       <div className="hero">
         <div className="video overlap">
-          <Video />
+          <Video videoUrl={"r5Ps1TZXAN8"} />
         </div>
         <div className="hero-banner overlap">
           <HeroBanner hero={"hero"} />

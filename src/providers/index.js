@@ -1,3 +1,3 @@
-import { VideoListingProvider } from "../context";
+import { VideoListingProvider, VideoPlayProvider } from "../context";
 
-export { VideoListingProvider };
+export { VideoListingProvider, VideoPlayProvider };

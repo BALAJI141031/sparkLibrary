@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 const videoListingContext = createContext();
 
 const VideoListingProvider = ({ children }) => {
@@ -73,4 +73,22 @@ const VideoListingProvider = ({ children }) => {
 
 const useVideoListing = () => useContext(videoListingContext);
 
-export { VideoListingProvider, useVideoListing };
+// single video context
+const playVideoContext = createContext();
+const VideoPlayProvider = ({ children }) => {
+  const [videoUrl, setVideoUrl] = useState("");
+  return (
+    <playVideoContext.Provider value={{ videoUrl, setVideoUrl }}>
+      {children}
+    </playVideoContext.Provider>
+  );
+};
+
+const usePlayVideo = () => useContext(playVideoContext);
+
+export {
+  VideoListingProvider,
+  VideoPlayProvider,
+  useVideoListing,
+  usePlayVideo,
+};

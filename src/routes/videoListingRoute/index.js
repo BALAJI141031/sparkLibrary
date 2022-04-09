@@ -3,7 +3,8 @@ import { VideoCard } from "../../components/index";
 import { useEffect, useState } from "react";
 
 import { publicGetRequest } from "../../serverCalls";
-import { useVideoListing, useNavigate } from "../../customHooks";
+import { useVideoListing, useNavigate, usePlayVideo } from "../../customHooks";
+
 const categoryList = [
   "All",
   "America",
@@ -18,6 +19,7 @@ const categoryList = [
 export default function VideoListingRoute() {
   const navigate = useNavigate();
   const { dispatchCountry, filteredVideos, videos } = useVideoListing();
+  const { setVideoUrl } = usePlayVideo();
   // const [buttonStyle, setButtonStyle] = useState(null);
   console.log(dispatchCountry, filteredVideos, "testing these two");
   useEffect(() => {
@@ -32,8 +34,9 @@ export default function VideoListingRoute() {
   }, []);
 
   // playing video
-  const playVideo = (video) => {
-    console.log("trying to navigate");
+  const playVideo = ({ url }) => {
+    // console.log("trying to navigate");
+    setVideoUrl(url);
     navigate("/play-videos");
   };
 

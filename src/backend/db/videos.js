@@ -17,6 +17,7 @@ export const videos = [
     mostStreamed: true,
     releasedDate: "September,2020",
     category: "China",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM",
@@ -31,6 +32,7 @@ export const videos = [
     mostStreamed: true,
     releasedDate: "September,2020",
     category: "America",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -45,6 +47,7 @@ export const videos = [
     mostStreamed: true,
     releasedDate: "September,2020",
     category: "Srilanka",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -59,6 +62,7 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "Pakistan",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -73,6 +77,7 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "Uk",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -87,6 +92,7 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "Uk",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -101,6 +107,7 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "Srilanka",
+    url: "9PbgYReEUO8",
   },
 
   {
@@ -116,6 +123,7 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "Russia",
+    url: "9PbgYReEUO8",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -130,5 +138,6 @@ export const videos = [
     mostStreamed: false,
     releasedDate: "September,2020",
     category: "France",
+    url: "9PbgYReEUO8",
   },
 ];

@@ -1,6 +1,6 @@
 import "./index.css";
 import { Video, VideoCard } from "../../components";
-import { useVideoListing } from "../../customHooks";
+import { useVideoListing, usePlayVideo } from "../../customHooks";
 import {
   BiLike,
   BiDislike,
@@ -8,13 +8,15 @@ import {
   CgPlayListAdd,
   FaRegBell,
 } from "../../icons";
+
 export default function PlayVideo() {
   const { filteredVideos } = useVideoListing();
-  console.log("checking for this", filteredVideos);
+  const { videoUrl } = usePlayVideo();
+
   return (
     <div className="play-video-section">
       <div className="play-video">
-        <Video />
+        <Video videoUrl={videoUrl} />
         <div className="description-analytics-div">
           <div className="desciption">
             <h5>Control The Choke Point:How The US Stole The Panama Canal</h5>
