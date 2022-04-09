@@ -16,6 +16,7 @@ export const videos = [
     listens: "2M",
     mostStreamed: true,
     releasedDate: "September,2020",
+    category: "China",
   },
   {
     _id: "F_Riqjdh2oM",
@@ -29,6 +30,7 @@ export const videos = [
     listens: "2M",
     mostStreamed: true,
     releasedDate: "September,2020",
+    category: "America",
   },
   {
     _id: "F_Riqjdh2oM_p",
@@ -42,5 +44,91 @@ export const videos = [
     listens: "2M",
     mostStreamed: true,
     releasedDate: "September,2020",
+    category: "Srilanka",
+  },
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "Pakistan",
+  },
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "Uk",
+  },
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "Uk",
+  },
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "Srilanka",
+  },
+
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "Russia",
+  },
+  {
+    _id: "F_Riqjdh2oM_p",
+    title: "India and Sri Lanka's violent fight over fish",
+    creator: "Jonny Harris",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    thumbnailImg:
+      "https://i.ytimg.com/vi/WesrJBgEmyw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCit9PoEz5wEh8e3Sh8PlVDX7-drg",
+    GIF: "",
+    listens: "2M",
+    mostStreamed: false,
+    releasedDate: "September,2020",
+    category: "France",
   },
 ];
