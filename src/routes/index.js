@@ -6,6 +6,7 @@ import {
   History,
   MyPlaylist,
   MyPlaylists,
+  LikedVideos,
 } from "./userActionRoutes";
 export {
   LandingRoute,
@@ -15,4 +16,5 @@ export {
   History,
   MyPlaylists,
   MyPlaylist,
+  LikedVideos,
 };

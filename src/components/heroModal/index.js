@@ -1,10 +1,8 @@
 import "./index.css";
+import { useNavigate } from "../../customHooks";
 
 function HeroBanner({ hero, category }) {
-  // console.log(props, "show me atleast props");
-
-  // console.log(category, "===ghgghghh");
-
+  const navigate = useNavigate();
   return (
     <div className={hero ? "banner hero-banner-width" : "banner"}>
       <h1 className="heading-margin">
@@ -16,7 +14,11 @@ function HeroBanner({ hero, category }) {
         </h2>
       )}
       {category && <h2>{category.description}</h2>}
-      <button>Explore</button>
+      {hero && (
+        <button className="cta" onClick={() => navigate("/videos/AllVideos")}>
+          Explore
+        </button>
+      )}
     </div>
   );
 }

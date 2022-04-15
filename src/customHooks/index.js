@@ -1,3 +1,14 @@
-import { useVideoListing, usePlayVideo } from "../context";
+import {
+  useVideoListing,
+  usePlayVideo,
+  useVideoAnalytics,
+  usePlaylists,
+} from "../context";
 import { useNavigate } from "react-router-dom";
-export { useVideoListing, useNavigate, usePlayVideo };
+export {
+  useVideoListing,
+  useNavigate,
+  usePlayVideo,
+  useVideoAnalytics,
+  usePlaylists,
+};

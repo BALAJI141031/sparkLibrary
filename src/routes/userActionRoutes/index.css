@@ -13,3 +13,8 @@
     display: grid;
 }
 
+.playlist{
+    border-style: solid;
+    border-color: cyan;
+}
+

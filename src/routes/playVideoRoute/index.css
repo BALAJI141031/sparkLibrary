@@ -12,6 +12,11 @@
 
     /* margin: 17.5px 0px 0px 5px; */
 }
+
+.video-actions:hover{
+    cursor: pointer;
+}
+
 .desciption h5{
     margin:0px 2px 0px 2px
 }
@@ -62,10 +67,10 @@
 .comment-box{
     display: block;
     border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: groove;
-width: 60vw;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 60vw;
 }
 
 .comment-box:focus {
@@ -83,11 +88,45 @@ width: 60vw;
     margin-top:12rem ;
 }
 
+#show-modal{
+    position: fixed;
+    display:block;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+    padding: 1em;
+    color: var(--pale-white);
+}
+#hide-modal{
+    display:none;
+} 
+
+#show-modal button {
+    margin:5px
+}
+
+.modal-heading {
+    margin: 0px 0px 20px 0px;
+}
+
+.check-div{
+    background-color: blueviolet;
+}
+
+.playlist-title{
+    margin: 0px 0px 15px 15px;
+    cursor: pointer;
+}
+
 @media screen and (min-width:768px) {
 
     .play-video-section{
         display: grid;
-        grid-template-columns:1fr 400px;
+        grid-template-columns:0.5fr 400px;
     }
 
     .recomended-videos{
@@ -99,7 +138,4 @@ width: 60vw;
         display:block
     }
 
-    /* .play-video{
-        margin-right:100px
-    } */
 }

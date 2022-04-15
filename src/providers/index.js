@@ -1,3 +1,13 @@
-import { VideoListingProvider, VideoPlayProvider } from "../context";
+import {
+  VideoListingProvider,
+  VideoPlayProvider,
+  AnalyticsVideoProvider,
+  PlaylistProvider,
+} from "../context";
 
-export { VideoListingProvider, VideoPlayProvider };
+export {
+  VideoListingProvider,
+  VideoPlayProvider,
+  AnalyticsVideoProvider,
+  PlaylistProvider,
+};

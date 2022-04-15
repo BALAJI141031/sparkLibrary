@@ -26,9 +26,9 @@ const VideoListingProvider = ({ children }) => {
           flag: "Pakistan",
           videos: [...payload],
         };
-      case "UK":
+      case "Middle-East":
         return {
-          flag: "UK",
+          flag: "Middle-East",
           videos: [...payload],
         };
       case "Srilanka":
@@ -76,19 +76,85 @@ const useVideoListing = () => useContext(videoListingContext);
 // single video context
 const playVideoContext = createContext();
 const VideoPlayProvider = ({ children }) => {
-  const [videoUrl, setVideoUrl] = useState("");
+  const [streamingVideo, setStreamingVideo] = useState("");
   return (
-    <playVideoContext.Provider value={{ videoUrl, setVideoUrl }}>
+    <playVideoContext.Provider value={{ streamingVideo, setStreamingVideo }}>
       {children}
     </playVideoContext.Provider>
   );
 };
-
 const usePlayVideo = () => useContext(playVideoContext);
+
+// user action videos
+const analyticVideosContext = createContext();
+const AnalyticsVideoProvider = ({ children }) => {
+  const setVideoAnalytics = (prevAnalytics, { type, payload }) => {
+    switch (type) {
+      case "liked":
+        return { ...prevAnalytics, liked: payload };
+      case "watchLater":
+        return { ...prevAnalytics, WatchLater: payload };
+      case "history":
+        return { ...prevAnalytics, history: payload };
+      default:
+        return { ...prevAnalytics, saved: payload };
+    }
+  };
+  const [{ WatchLater, liked, saved }, dispatchAnalytics] = useReducer(
+    setVideoAnalytics,
+    { WatchLater: false, liked: false, saved: false }
+  );
+  return (
+    <analyticVideosContext.Provider
+      value={{ WatchLater, liked, saved, dispatchAnalytics }}
+    >
+      {children}
+    </analyticVideosContext.Provider>
+  );
+};
+
+const useVideoAnalytics = () => useContext(analyticVideosContext);
+
+// playlist management
+const playlistContext = createContext();
+const PlaylistProvider = ({ children }) => {
+  const setPlaylist = (prevPlaylist, { type, payload }) => {
+    switch (type) {
+      case "openModal":
+        return { playlistModal: true, newPlaylist: false, playlists: false };
+      case "newPlaylist":
+        return { playlistModal: false, newPlaylist: true, playlists: false };
+      case "addToPlaylist":
+        return { playlistModal: false, newPlaylist: false, playlists: true };
+      default:
+        return { playlistModal: false, newPlaylist: false, playlists: false };
+    }
+  };
+
+  const [{ newPlaylist, playlistModal, playlists }, dispatchPlaylist] =
+    useReducer(setPlaylist, {
+      newPlaylist: false,
+      playlistModal: false,
+      playlists: false,
+    });
+  return (
+    <playlistContext.Provider
+      value={{ newPlaylist, playlistModal, playlists, dispatchPlaylist }}
+    >
+      {children}
+    </playlistContext.Provider>
+  );
+};
+
+const usePlaylists = () => useContext(playlistContext);
 
 export {
   VideoListingProvider,
   VideoPlayProvider,
   useVideoListing,
   usePlayVideo,
+  AnalyticsVideoProvider,
+  useVideoAnalytics,
+  PlaylistProvider,
+  usePlaylists,
 };

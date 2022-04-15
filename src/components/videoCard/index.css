@@ -1,7 +1,14 @@
 .video-card{
     margin:10px 0px 10px 10px;
-    grid-column:1/-1;
-    grid-row:1/2
+    /* grid-column:1/-1;
+    grid-row:1/2 */ 
+    /* THIs is culprit */
+}
+
+.video-card-for-badge{
+    margin:10px 0px 10px 10px;
+     grid-column:1/-1;
+    grid-row:1/2  
 }
 
 .video-card-badge{
@@ -12,8 +19,10 @@
     grid-column: 1/-1;
     grid-row:1/2;
     justify-self: end;
-    color: cyan;
+    color: cyan; 
     margin: 20px 20px 0px 0px;
+    font-size: 2rem;
+    cursor: pointer;
     
 }
 
@@ -31,6 +40,7 @@
     justify-content: center;
     width:90%;
     font-size: 1.2rem;
-    padding:5px
+    padding:5px;
+    color: var(--primary-color);
 
 }

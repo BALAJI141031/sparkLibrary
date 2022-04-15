@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import { Video, VideoCard, HeroBanner } from "../../components";
 import { publicGetRequest } from "../../serverCalls";
+import { useNavigate, usePlayVideo } from "../../customHooks";
 function LandingRoute() {
+  const navigate = useNavigate();
   const [{ mostStreamedVideos, featuredCategories }, setHomepageVideos] =
     useState({
       featuredCategories: [],
       mostStreamedVideos: [],
     });
-
+  const { setStreamingVideo, streamingVideo } = usePlayVideo();
   useEffect(() => {
     (async () => {
       try {
@@ -24,24 +26,12 @@ function LandingRoute() {
           await categorieyVideos.data.categories.filter(
             (category) => category.isFeatured
           );
-
-        console.log(
-          "i want to know what's there in state after effect",
-          featuredCategories,
-          mostStreamedVideos
-        );
-
         setHomepageVideos({ featuredCategories, mostStreamedVideos });
       } catch (e) {
         console.log(e);
       }
     })();
   }, []);
-  console.log(
-    "i want to know what's there in state before effect",
-    featuredCategories,
-    mostStreamedVideos
-  );
 
   return (
     <main className="main-div">
@@ -58,7 +48,10 @@ function LandingRoute() {
         <div className="featured-videos">
           {featuredCategories.length !== 0 &&
             featuredCategories.map((category) => (
-              <div className="featured-video">
+              <div
+                className="featured-video"
+                onClick={() => navigate(`/videos/${category.categoryName}`)}
+              >
                 <div className="overlap">
                   <img
                     src={category.thumbnailImg}
@@ -75,9 +68,17 @@ function LandingRoute() {
       </div>
       <div className="most-viewed-div">
         <h2 className="text-align-center">Most Streamed Videos</h2>
+
         <div className="most-viewed-videos">
           {mostStreamedVideos.map((video) => (
-            <VideoCard video={video} />
+            <div
+              onClick={() => {
+                setStreamingVideo(video);
+                navigate(`/play-videos`);
+              }}
+            >
+              <VideoCard video={video} />
+            </div>
           ))}
         </div>
       </div>

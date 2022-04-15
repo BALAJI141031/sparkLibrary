@@ -1,9 +1,11 @@
 import "./index.css";
 import { GrHome, GrClose, GrMenu } from "../../icons";
 import { useState } from "react";
+import { useNavigate } from "../../customHooks";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const navigate = useNavigate();
 
   // toggle sidebar
   const toggleSidebar = () => setSidebar((isSideActive) => !isSideActive);
@@ -38,22 +40,32 @@ function Navbar() {
           <GrHome />
           <p>Home</p>
         </div>
-        <div className="sidebar-section">
+        <div
+          className="sidebar-section"
+          onClick={() => navigate("/watch-later")}
+        >
           <GrHome />
-          <p>Home</p>
+          <p>WatchLater</p>
         </div>
-        <div className="sidebar-section">
+        <div className="sidebar-section" onClick={() => navigate("/history")}>
           <GrHome />
-          <p>Home</p>
+          <p>History</p>
         </div>
         <hr />
-        <div className="sidebar-section">
+
+        <div
+          className="sidebar-section"
+          onClick={() => navigate("/liked-videos")}
+        >
           <GrHome />
-          <p>Home</p>
+          <p>Liked Videos</p>
         </div>
-        <div className="sidebar-section">
+        <div
+          className="sidebar-section"
+          onClick={() => navigate("/my-playlists")}
+        >
           <GrHome />
-          <p>Home</p>
+          <p>My playlists</p>
         </div>
         <hr />
         <button className="btn primary-icon-btn btn-m">Login</button>

@@ -1,7 +1,7 @@
 import "./index.css";
 import { VideoCard } from "../../components/index";
 import { useEffect, useState } from "react";
-
+import { useParams } from "react-router-dom";
 import { publicGetRequest } from "../../serverCalls";
 import { useVideoListing, useNavigate, usePlayVideo } from "../../customHooks";
 
@@ -11,22 +11,34 @@ const categoryList = [
   "China",
   "Pakistan",
   "Srilanka",
-  "UK",
+  "Middle-East",
   "France",
   "Russia",
 ];
 
 export default function VideoListingRoute() {
   const navigate = useNavigate();
+  const { country } = useParams();
+
   const { dispatchCountry, filteredVideos, videos } = useVideoListing();
-  const { setVideoUrl } = usePlayVideo();
-  // const [buttonStyle, setButtonStyle] = useState(null);
-  console.log(dispatchCountry, filteredVideos, "testing these two");
+  const { setStreamingVideo } = usePlayVideo();
+  let initialBtn;
+  switch (country) {
+    case "AllVideos":
+      initialBtn = "All";
+      break;
+    default:
+      initialBtn = country;
+      break;
+  }
+
+  const [activeButton, setActiveButton] = useState(initialBtn);
+
   useEffect(() => {
     (async () => {
       try {
         const response = await publicGetRequest("/api/videos");
-        dispatchCountry({ type: "AllVideos", payload: response.data.videos });
+        dispatchCountry({ type: country, payload: response.data.videos });
       } catch (e) {
         console.log(e);
       }
@@ -34,21 +46,24 @@ export default function VideoListingRoute() {
   }, []);
 
   // playing video
-  const playVideo = ({ url }) => {
-    // console.log("trying to navigate");
-    setVideoUrl(url);
+  const playVideo = (video) => {
+    setStreamingVideo(video);
     navigate("/play-videos");
   };
 
-  console.log(filteredVideos, "checking for videos to render on listing page");
   return (
     <div>
       <h3 className="text-align-center">Relations With</h3>
       <div className="video-categories">
         {categoryList.map((category) => (
           <div
-            className="category"
-            onClick={() => dispatchCountry({ type: category, payload: videos })}
+            className={
+              activeButton === category ? "category style-btn" : "category"
+            }
+            onClick={() => {
+              setActiveButton(category);
+              dispatchCountry({ type: category, payload: videos });
+            }}
           >
             {category}
           </div>

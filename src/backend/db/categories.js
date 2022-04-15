@@ -24,7 +24,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Middle east",
+    categoryName: "Middle-East",
     isFeatured: true,
     description: "India's Relations with Middle-east",
     thumbnailImg:
