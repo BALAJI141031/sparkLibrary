@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useState } from "react";
+import Cookies from "js-cookie";
 const videoListingContext = createContext();
 
 const VideoListingProvider = ({ children }) => {
@@ -148,6 +149,42 @@ const PlaylistProvider = ({ children }) => {
 
 const usePlaylists = () => useContext(playlistContext);
 
+// auth context
+
+const authContext = createContext({ jwtToken: "" });
+
+const AuthProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [jwtToken, setJwtToken] = useState(Cookies.get("jwt_token"));
+
+  return (
+    <authContext.Provider value={{ jwtToken, isLoggedIn, setIsLoggedIn }}>
+      {children}
+    </authContext.Provider>
+  );
+};
+
+const useAuth = () => useContext(authContext);
+
+// snackbar context
+const snackbarContext = createContext();
+
+const SnackbarProvider = ({ children }) => {
+  const [snackbar, setSnackbar] = useState({
+    status: false,
+    text: null,
+    type: null,
+  });
+  return (
+    <snackbarContext.Provider value={{ snackbar, setSnackbar }}>
+      {children}
+    </snackbarContext.Provider>
+  );
+};
+
+// custom hook for snackbar
+const useSnackbar = () => useContext(snackbarContext);
+
 export {
   VideoListingProvider,
   VideoPlayProvider,
@@ -157,4 +194,8 @@ export {
   useVideoAnalytics,
   PlaylistProvider,
   usePlaylists,
+  AuthProvider,
+  useAuth,
+  SnackbarProvider,
+  useSnackbar,
 };

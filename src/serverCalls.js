@@ -9,6 +9,18 @@ const publicGetRequest = async (path) => {
   }
 };
 
+const publicPostRequest = async (path, payload) => {
+  try {
+    console.log(path, payload, "============>");
+    const response = await axios.post(path, payload);
+    console.log("it is not printing");
+    return "ok";
+  } catch (e) {
+    console.log("coming directly here", e);
+    return e;
+  }
+};
+
 const privateGetRequest = async (path) => {
   try {
     const response = await axios.get(path, {
@@ -25,7 +37,6 @@ const privateGetRequest = async (path) => {
 
 const privatePostRequest = async (path, video) => {
   try {
-    console.log(path, video, "checking parameter");
     const response = await axios.post(
       path,
       { video },
@@ -81,4 +92,5 @@ export {
   privateDeleteRequest,
   privateGetRequest,
   createPlaylistReq,
+  publicPostRequest,
 };

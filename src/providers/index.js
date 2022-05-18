@@ -3,6 +3,8 @@ import {
   VideoPlayProvider,
   AnalyticsVideoProvider,
   PlaylistProvider,
+  AuthProvider,
+  SnackbarProvider,
 } from "../context";
 
 export {
@@ -10,4 +12,6 @@ export {
   VideoPlayProvider,
   AnalyticsVideoProvider,
   PlaylistProvider,
+  AuthProvider,
+  SnackbarProvider,
 };

@@ -6,6 +6,8 @@ import { useNavigate, usePlayVideo } from "../../customHooks";
 import { privateGetRequest, privateDeleteRequest } from "../../serverCalls";
 import { useParams } from "react-router-dom";
 import { AiOutlineDelete } from "../../icons";
+
+
 function WatchLater() {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
@@ -34,7 +36,7 @@ function WatchLater() {
       <div className="user-action-div">
         {watchLaterVideos.length !== 0 ? (
           watchLaterVideos.map((video) => (
-            <div onClick={() => playUserRequireVideo(video)}>
+            <div>
               <VideoCard
                 video={video}
                 anlyticCategory={"watchLater"}
@@ -92,7 +94,7 @@ function History(params) {
       <div className="user-action-div">
         {history.length !== 0 ? (
           history.map((video) => (
-            <div onClick={() => playUserRequireVideo(video)}>
+            <div>
               <VideoCard
                 video={video}
                 anlyticCategory={"history"}
@@ -164,7 +166,6 @@ function MyPlaylist(params) {
         const userRequirePlaylist = response.data.playlists.filter(
           (playlist) => playlist._id == id
         );
-        console.log(userRequirePlaylist, "what you saying");
         setPlaylist([...userRequirePlaylist[0].videos]);
       } catch (e) {
         console.log(e);
@@ -224,7 +225,7 @@ function LikedVideos(params) {
       <div className="user-action-div">
         {likedVideos.length !== 0 ? (
           likedVideos.map((video) => (
-            <div onClick={() => playUserRequireVideo(video)}>
+            <div>
               <VideoCard
                 video={video}
                 anlyticCategory={"like"}

@@ -5,9 +5,11 @@ import {
   AiOutlineDelete,
   RiDislikeLine,
 } from "../../icons";
+import { usePlayVideo } from "../../customHooks";
 import { privateDeleteRequest } from "../../serverCalls";
 function VideoCard(props) {
   const { video, anlyticCategory, setUi } = props;
+  const { playUserRequireVideo } = usePlayVideo();
 
   const { title, thumbnailImg, creator, listens, releasedDate, GIF } = video;
   let badge;
@@ -67,7 +69,7 @@ function VideoCard(props) {
         <p className="text-margin">
           {listens} streams|{releasedDate}
         </p>
-        <button className="btn-cta">
+        <button className="btn-cta" onClick={() => playUserRequireVideo(video)}>
           <BsFillCaretRightFill className="mr-r" />
           Watch Now
         </button>

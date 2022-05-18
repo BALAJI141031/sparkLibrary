@@ -3,6 +3,8 @@ import {
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
+  useAuth,
+  useSnackbar,
 } from "../context";
 import { useNavigate } from "react-router-dom";
 export {
@@ -11,4 +13,6 @@ export {
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
+  useAuth,
+  useSnackbar,
 };

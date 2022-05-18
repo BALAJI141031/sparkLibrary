@@ -22,6 +22,8 @@ export default function VideoListingRoute() {
 
   const { dispatchCountry, filteredVideos, videos } = useVideoListing();
   const { setStreamingVideo } = usePlayVideo();
+
+  // this is to add styles for nav items
   let initialBtn;
   switch (country) {
     case "AllVideos":

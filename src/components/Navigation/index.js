@@ -1,16 +1,19 @@
 import "./index.css";
 import { GrHome, GrClose, GrMenu } from "../../icons";
 import { useState } from "react";
-import { useNavigate } from "../../customHooks";
+import { useNavigate, useSnackbar } from "../../customHooks";
+import { showSnackbar, hideSnackbar } from "../snackbar";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const navigate = useNavigate();
+  const { snackbar, setSnackbar } = useSnackbar();
 
+  console.log(snackbar, setSnackbar, "check this on priority");
   // toggle sidebar
   const toggleSidebar = () => setSidebar((isSideActive) => !isSideActive);
   return (
-    <nav class="navbar">
+    <div class="navbar">
       <div class="flex-H-space-around">
         <div>
           <sapn class="span-style">SL</sapn>
@@ -70,7 +73,9 @@ function Navbar() {
         <hr />
         <button className="btn primary-icon-btn btn-m">Login</button>
       </div>
-    </nav>
+      {snackbar.status &&
+        showSnackbar({ type: snackbar.type, text: snackbar.text })}
+    </div>
   );
 }
 

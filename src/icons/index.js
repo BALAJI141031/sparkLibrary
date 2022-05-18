@@ -1,4 +1,4 @@
-import { BiSearchAlt2, BiLike, BiDislike } from "react-icons/bi";
+import { BiSearchAlt2, BiLike, BiDislike, BiShow } from "react-icons/bi";
 
 import {
   BsFillCaretRightFill,
@@ -30,6 +30,5 @@ export {
   BsFillHeartFill,
   AiOutlineDelete,
   RiDislikeLine,
+  BiShow,
 };
-
-

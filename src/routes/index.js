@@ -8,6 +8,7 @@ import {
   MyPlaylists,
   LikedVideos,
 } from "./userActionRoutes";
+import { Login, Signup } from "./authRoute";
 export {
   LandingRoute,
   VideoListingRoute,
@@ -17,4 +18,6 @@ export {
   MyPlaylists,
   MyPlaylist,
   LikedVideos,
+  Login,
+  Signup,
 };

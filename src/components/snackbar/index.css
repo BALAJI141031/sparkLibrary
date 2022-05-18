@@ -1,0 +1,34 @@
+
+#success-toast{
+    background-color:rgb(185, 185, 248);
+    
+}
+
+.snackbar{
+    position: fixed;
+    z-index: 999;
+    right: 3%;
+    width: 15rem;
+    padding-left: 10px;
+    animation: slideMe 0.5s ease-in ;
+}
+
+#error-toast{
+background-color: rgb(224, 85, 85);
+    color:var(--pale-white); 
+}
+
+#warn-toast{
+   background-color: rgb(226, 200, 49);
+    color:var(--pale-white);  
+}
+
+@keyframes slideMe {
+    0%{
+        transform: skew(53deg) translateX(-500px);
+    }
+    100%{
+        transform: skew(0deg);
+
+    }
+}
