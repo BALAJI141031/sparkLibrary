@@ -18,7 +18,9 @@ import {
 function App() {
   return (
     <div className="">
-      <Navbar />
+      <div className="navbar-div">
+        <Navbar />
+      </div>
       <Routes>
         <Route path="/" element={<LandingRoute />} />
         <Route path="/videos/:country" element={<VideoListingRoute />} />

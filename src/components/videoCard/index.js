@@ -69,10 +69,12 @@ function VideoCard(props) {
         <p className="text-margin">
           {listens} streams|{releasedDate}
         </p>
-        <button className="btn-cta" onClick={() => playUserRequireVideo(video)}>
-          <BsFillCaretRightFill className="mr-r" />
-          Watch Now
-        </button>
+        <center>
+          <button className="cta" onClick={() => playUserRequireVideo(video)}>
+            <BsFillCaretRightFill className="mr-r" />
+            Watch Now
+          </button>
+        </center>
       </div>
       <div
         className="video-badge"

@@ -46,7 +46,6 @@
 
 .featured-video{
     display: grid;
-    /* grid-template-columns: repeat (200px,120px ); */
     margin:10px 0px 10px 10px;
     cursor: pointer;       
 }

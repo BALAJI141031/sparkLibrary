@@ -1,17 +1,16 @@
 import "./index.css";
 import { useNavigate } from "../../customHooks";
+import { GiWindSlap } from "../../icons";
 
 function HeroBanner({ hero, category }) {
   const navigate = useNavigate();
   return (
     <div className={hero ? "banner hero-banner-width" : "banner"}>
-      <h1 className="heading-margin">
-        {hero ? "Spark Library" : category.categoryName}
-      </h1>
+      <h1>{hero ? `Spark Wind` : category.categoryName}</h1>
       {hero && (
-        <h2 className="heading-margin" style={{ fontSize: "1.5rem" }}>
+        <h1 className="heading-margin">
           Dedicated International Relations Niche To Civils Aspirant's
-        </h2>
+        </h1>
       )}
       {category && <h2>{category.description}</h2>}
       {hero && (

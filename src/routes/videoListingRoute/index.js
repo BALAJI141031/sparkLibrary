@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { publicGetRequest } from "../../serverCalls";
 import { useVideoListing, useNavigate, usePlayVideo } from "../../customHooks";
+import { BiSearchAlt2 } from "../../icons";
 
 const categoryList = [
   "All",
@@ -55,7 +56,10 @@ export default function VideoListingRoute() {
 
   return (
     <div>
-      <h3 className="text-align-center">Relations With</h3>
+      <center>
+        <h3>Relations With</h3>
+      </center>
+      <BiSearchAlt2 style={{ width: "40px", height: "40px", color: "red" }} />
       <div className="video-categories">
         {categoryList.map((category) => (
           <div
