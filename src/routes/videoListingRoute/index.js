@@ -55,11 +55,10 @@ export default function VideoListingRoute() {
   };
 
   return (
-    <div>
+    <div className="video-listing-section">
       <center>
         <h3>Relations With</h3>
       </center>
-      <BiSearchAlt2 style={{ width: "40px", height: "40px", color: "red" }} />
       <div className="video-categories">
         {categoryList.map((category) => (
           <div

@@ -17,14 +17,13 @@
 }
 
 .style-btn{
-    background-color: rgb(183, 143, 223);
-    color:var(--pale-white)
+    background-color:var(--primary-color);
+    color:var(--font-color)
 }
 
-
-/* .category:hover{
-    color: var(--primary-color);
-} */
+.video-listing-section{
+    padding-top: 10%;
+}
 
 .videos{
    display: grid;

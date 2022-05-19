@@ -1,3 +1,7 @@
+body{
+    color: var(--secondary-color);
+}
+
 .main-div{
     width: 100%;
     display: grid;

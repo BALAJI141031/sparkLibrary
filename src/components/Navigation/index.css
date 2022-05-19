@@ -22,10 +22,7 @@
     padding-top:2px;
     z-index: 9;
 }
-.navbar{
-    
-}
-    
+ 
 .btn-m {
     margin-left:15%
 }
@@ -33,14 +30,14 @@
 #close-icon{
     height: 32px;
     width: 28px;
-    color: #DBD8E3;
+    color: var(--font-color);
 
 }
 
 #menu-icon{
     height: 32px;
     width: 28px;
-     color: #DBD8E3;
+     color: var(--font-color);
 }
 
 .showSidebar{
@@ -48,8 +45,8 @@
     right: 0%;
     top:100%;
     z-index:12;
-    color: #DBD8E3;
-    background-color:#16003B ;
+    color: var(--font-color);
+    background-color:var(--secondary-color) ;
     width: 15rem;
     height:100vh;
 }
@@ -59,8 +56,8 @@
 
 #header-div{
     width:100%;
-    /* background-color:#16003B ; */
-    color: #DBD8E3;
+    /* background-color:var(--secondary-color) ; */
+    color: var(--font-color);
     position:relative;
     z-index: 1;
     padding-bottom:10px;
@@ -71,7 +68,7 @@ input:focus{
     border-style: solid;
     border-width:3px;
     border-radius:2px;
-    border-color: #FF004D;
+    border-color: var(--primary-color);
 }
 
 .sidebar-section{
