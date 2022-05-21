@@ -4,10 +4,16 @@ import {
   BsFillCaretRightFill,
   BsHandThumbsUp,
   BsHandThumbsUpFill,
-  BsHandThumbsDown,
   BsFillHeartFill,
+  BsHandThumbsDownFill,
 } from "react-icons/bs";
-import { MdOutlineWatchLater, MdExplore, MdWatchLater } from "react-icons/md";
+import {
+  MdOutlineWatchLater,
+  MdExplore,
+  MdWatchLater,
+  MdRemoveCircle,
+  MdDelete,
+} from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { FaRegBell } from "react-icons/fa";
 import { AiOutlineDelete, AiOutlineClose } from "react-icons/ai";
@@ -26,7 +32,6 @@ export {
   FaRegBell,
   BsHandThumbsUp,
   BsHandThumbsUpFill,
-  BsHandThumbsDown,
   BsFillHeartFill,
   AiOutlineDelete,
   RiDislikeLine,
@@ -39,4 +44,7 @@ export {
   MdWatchLater,
   FaHistory,
   RiPlayListLine,
+  BsHandThumbsDownFill,
+  MdRemoveCircle,
+  MdDelete,
 };

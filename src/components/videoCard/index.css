@@ -1,8 +1,5 @@
 .video-card{
     margin:10px 0px 10px 10px;
-    /* grid-column:1/-1;
-    grid-row:1/2 */ 
-    /* THIs is culprit */
     background-color: var(--secondary-color); 
     padding: 5px;
     border-radius: 5px;
@@ -11,26 +8,29 @@
 
 .video-card-for-badge{
     margin:10px 0px 10px 10px;
-     grid-column:1/-1;
+    grid-column:1/-1;
     grid-row:1/2;
-   
+    background-color: var(--secondary-color);
+    color:var(--font-color);
+    /* width: 18rem; */
+    padding: 10px;
+    gap: 1rem;
 }
 
 .video-card-badge{
     display:grid;  
-     
 }
 
 .video-badge{
     grid-column: 1/-1;
     grid-row:1/2;
     justify-self: end;
-    color: cyan; 
+    color: var(--primary-color); 
     margin: 20px 20px 0px 0px;
     font-size: 2rem;
     cursor: pointer;
-      
-    
+    height: max-content;
+    width:max-content   
 }
 
 .text-margin{

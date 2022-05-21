@@ -37,6 +37,7 @@ const privateGetRequest = async (path) => {
 
 const privatePostRequest = async (path, video) => {
   try {
+    console.log(path, video, "failing to make post");
     const response = await axios.post(
       path,
       { video },

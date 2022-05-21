@@ -179,7 +179,7 @@ export default function PlayVideo() {
             </div>
           </div>
           <div className="flex-H-center-V subscription-div">
-            <div>Subscribe</div>
+            <button className="cta">Subscribe</button>
             <FaRegBell className="icon-lg" />
           </div>
         </div>

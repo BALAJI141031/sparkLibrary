@@ -25,13 +25,8 @@ function WatchLater() {
     })();
   }, []);
 
-  const playUserRequireVideo = (video) => {
-    setStreamingVideo(video);
-    navigate("/play-videos");
-  };
-
   return (
-    <div>
+    <div className="p-t">
       <h3 className="text-align-center">Your Watch-later-videos</h3>
       <div className="user-action-div">
         {watchLaterVideos.length !== 0 ? (
@@ -81,15 +76,14 @@ function History(params) {
   };
 
   // play history video
-  const playUserRequireVideo = (video) => {
-    setStreamingVideo(video);
-    navigate("/play-videos");
-  };
+
   return (
-    <div>
+    <div className="p-t">
       <div className="flex-H-space-around">
         <h3>Watched videos</h3>
-        <button onClick={clearAllHistory}>Clear Total History</button>
+        <button onClick={clearAllHistory} className="cta">
+          Clear Total History
+        </button>
       </div>
       <div className="user-action-div">
         {history.length !== 0 ? (
@@ -125,7 +119,7 @@ function MyPlaylists(params) {
   }, []);
 
   return (
-    <div>
+    <div className="p-t">
       <div className="flex-H-space-around ">
         <h3 className="text-m">My Playlists</h3>
         <button className="text-m btn primary-icon-btn">
@@ -179,7 +173,7 @@ function MyPlaylist(params) {
   };
 
   return (
-    <div>
+    <div className="p-t">
       <div className="flex-H-space-around ">
         <h3 className="text-m">My Playlist</h3>
         <button className="text-m">Delete Playlist</button>
@@ -187,7 +181,7 @@ function MyPlaylist(params) {
       <div className="user-action-div">
         {playlist.length !== 0 &&
           playlist.map((video) => (
-            <div onClick={() => playUserRequireVideo(video)}>
+            <div>
               <VideoCard video={video} />
             </div>
           ))}
@@ -219,7 +213,7 @@ function LikedVideos(params) {
   };
 
   return (
-    <div>
+    <div className="p-t">
       <h1 className="text-align-center">Liked videos</h1>
       <hr />
       <div className="user-action-div">

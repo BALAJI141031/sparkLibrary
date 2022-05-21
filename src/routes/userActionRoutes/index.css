@@ -15,6 +15,9 @@
 
 .playlist{
     border-style: solid;
-    border-color: cyan;
+    border-color: var(--primary-color);
 }
 
+.p-t{
+    padding-top: 4%;
+}

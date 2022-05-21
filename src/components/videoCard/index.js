@@ -1,27 +1,29 @@
 import "./index.css";
 import {
   BsFillCaretRightFill,
-  BsHandThumbsDown,
-  AiOutlineDelete,
-  RiDislikeLine,
+  BsHandThumbsDownFill,
+  MdDelete,
+  MdRemoveCircle,
 } from "../../icons";
+import { useNavigate } from "react-router-dom";
 import { usePlayVideo } from "../../customHooks";
 import { privateDeleteRequest } from "../../serverCalls";
 function VideoCard(props) {
   const { video, anlyticCategory, setUi } = props;
-  const { playUserRequireVideo } = usePlayVideo();
+  const { setStreamingVideo, streamingVideo } = usePlayVideo();
+  const navigate = useNavigate();
 
   const { title, thumbnailImg, creator, listens, releasedDate, GIF } = video;
   let badge;
   switch (anlyticCategory) {
     case "like":
-      badge = <BsHandThumbsDown />;
+      badge = <BsHandThumbsDownFill />;
       break;
     case "watchLater":
-      badge = <RiDislikeLine />;
+      badge = <MdRemoveCircle />;
       break;
     case "history":
-      badge = <AiOutlineDelete />;
+      badge = <MdDelete />;
       break;
     default:
       badge = <BsFillCaretRightFill />;
@@ -64,13 +66,19 @@ function VideoCard(props) {
             className="res-image"
           />
         </div>
-        <strong className="text-margin">{title}</strong>
+        <h5 className="text-margin">{title}</h5>
         <p className="text-margin">By {creator}</p>
         <p className="text-margin">
           {listens} streams|{releasedDate}
         </p>
         <center>
-          <button className="cta" onClick={() => playUserRequireVideo(video)}>
+          <button
+            className="cta"
+            onClick={() => {
+              setStreamingVideo(video);
+              navigate(`/play-videos`);
+            }}
+          >
             <BsFillCaretRightFill className="mr-r" />
             Watch Now
           </button>

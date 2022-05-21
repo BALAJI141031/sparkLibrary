@@ -15,13 +15,13 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: true,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "China",
     url: "qw-FLc7Z01Q",
   },
   {
     _id: "F_Riqjdh2oM",
-    title: "How the U.S. Stole the mexico",
+    title: "How the U.S. Stole..",
     creator: "Sentdex",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -30,13 +30,13 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: true,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "America",
     url: "3OMmxKiG4LE",
   },
   {
     _id: "F_Riqjdh2oMs",
-    title: "How the U.S. Stole the Hawaii",
+    title: "How the U.S. Stole..",
     creator: "Sentdex",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -45,7 +45,7 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: true,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "America",
     url: "XK2MBnw6RlY",
   },
@@ -60,7 +60,7 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: true,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "Srilanka",
     url: "JpISyeHz73Q&t=75s",
   },
@@ -96,7 +96,7 @@ export const videos = [
   },
   {
     _id: "F_Riqjdh2oM_p_vb",
-    title: "India UK Bilateral Relation",
+    title: "India UK Relation",
     creator: "Unacademy",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -111,7 +111,7 @@ export const videos = [
   },
   {
     _id: "F_Riqjdh2oM_p_bnh",
-    title: "India and Sri Lanka's violent fight over fish",
+    title: "Ind and SL violent fight over..",
     creator: "Jonny Harris",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -126,7 +126,7 @@ export const videos = [
   },
   {
     _id: "F_Riqjdh2oM_p_hji",
-    title: "India and Sri Lanka's realtions 2021",
+    title: "India and Sri Lanka's",
     creator: "Jonny Harris",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -135,14 +135,14 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: false,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "Srilanka",
     url: "5WTa6l_I_os",
   },
 
   {
     _id: "F_Riqjdh2oM_p_a_paul",
-    title: "WTF Are Sanctions?? (and will they work against Putin?)",
+    title: "WTF Are Sanctions??",
     creator: "Jonny Harris",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -157,7 +157,7 @@ export const videos = [
   },
   {
     _id: "F_Riqjdh2oM_p_a_paul",
-    title: "Putin Will Lose, Here's Why",
+    title: "Putin Will Lose",
     creator: "Jonny Harris",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -166,13 +166,13 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: false,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "Russia",
     url: "FQ4hvLqNfqo",
   },
   {
     _id: "F_Riqjdh2oM_p_x",
-    title: "France Still Has An Empire",
+    title: "France Still Has..",
     creator: "Jonny Harris",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
@@ -181,7 +181,7 @@ export const videos = [
     GIF: "",
     listens: "2M",
     mostStreamed: false,
-    releasedDate: "September,2020",
+    releasedDate: "Sep,2020",
     category: "France",
     url: "xykDDyHDTZY",
   },
