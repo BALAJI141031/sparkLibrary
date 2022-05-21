@@ -2,8 +2,13 @@ import "./index.css";
 import { VideoCard } from "../../components/index";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { publicGetRequest } from "../../serverCalls";
-import { useVideoListing, useNavigate, usePlayVideo } from "../../customHooks";
+import { publicGetRequest, privateGetRequest } from "../../serverCalls";
+import {
+  useVideoListing,
+  useNavigate,
+  usePlayVideo,
+  useVideoAnalytics,
+} from "../../customHooks";
 import { BiSearchAlt2 } from "../../icons";
 
 const categoryList = [
@@ -20,6 +25,7 @@ const categoryList = [
 export default function VideoListingRoute() {
   const navigate = useNavigate();
   const { country } = useParams();
+  const { dispatchAnalytics } = useVideoAnalytics();
 
   const { dispatchCountry, filteredVideos, videos } = useVideoListing();
   const { setStreamingVideo } = usePlayVideo();
@@ -49,8 +55,24 @@ export default function VideoListingRoute() {
   }, []);
 
   // playing video
-  const playVideo = (video) => {
+  const playVideo = async (video) => {
     setStreamingVideo(video);
+    try {
+      const likedVideos = await privateGetRequest("/api/user/likes");
+      if (likedVideos.data.likes.length !== 0) {
+        for (let i = 0; i < likedVideos.data.likes.length; i++) {
+          if (likedVideos.data.likes[i]._id === video._id) {
+            dispatchAnalytics({ type: "liked", payload: true });
+            console.log(likedVideos.data.likes[i]._id, video._id);
+          } else {
+            console.log("elseblock");
+            dispatchAnalytics({ type: "liked", payload: false });
+          }
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
     navigate("/play-videos");
   };
 

@@ -6,6 +6,7 @@ import {
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
+  useIsVideoLiked,
 } from "../../customHooks";
 import {
   privatePostRequest,
@@ -47,11 +48,16 @@ export default function PlayVideo() {
   const toggleWatchLaterVideo = async (video) => {
     try {
       if (!WatchLater) {
-        await privatePostRequest("/api/user/watchlater", video);
+        const watchLaterResponse = await privatePostRequest(
+          "/api/user/watchlater",
+          video
+        );
         dispatchAnalytics({ type: "watchLater", payload: true });
       } else {
-        await privateDeleteRequest(`/api/user/watchlater/${video._id}`);
-        dispatchAnalytics({ type: "watchLater", payload: false });
+        // const deleteWatchLaterRes = await privateDeleteRequest(
+        //   `/api/user/watchlater/${video._id}`
+        // );
+        // dispatchAnalytics({ type: "watchLater", payload: false });
       }
     } catch (e) {
       console.error(e);
@@ -72,6 +78,23 @@ export default function PlayVideo() {
       console.error(e);
     }
   };
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const likedVideos = await privateGetRequest("/api/user/likes");
+  //     console.log(likedVideos.data.likes);
+  //     if (likedVideos.data.likes.length !== 0) {
+  //       for (let i = 0; i < likedVideos.data.likes.length; i++) {
+  //         if (likedVideos.data.likes[i]._id === streamingVideo._id) {
+  //           dispatchAnalytics({ type: "liked", payload: true });
+  //           console.log(likedVideos.data.likes[i]._id, streamingVideo._id);
+  //         } else {
+  //           // dispatchAnalytics({ type: "liked", payload: false });
+  //         }
+  //       }
+  //     }
+  //   })();
+  // }, []);
 
   // fetching exisitng playlists
 
@@ -128,8 +151,32 @@ export default function PlayVideo() {
   };
 
   // playing recomended video
-  const playRecomendedVideo = (video) => {
+  const playRecomendedVideo = async (video) => {
     setStreamingVideo(video);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    try {
+      const likedVideos = await privateGetRequest("/api/user/likes");
+      let flag = 0;
+      if (likedVideos.data.likes.length !== 0) {
+        for (let i = 0; i < likedVideos.data.likes.length; i++) {
+          if (likedVideos.data.likes[i]._id === video._id) {
+            dispatchAnalytics({ type: "liked", payload: true });
+            break;
+          } else {
+            console.log("elseblock");
+            flag++;
+          }
+        }
+        if (flag === likedVideos.data.likes.length)
+          dispatchAnalytics({ type: "liked", payload: false });
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (

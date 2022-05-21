@@ -1,7 +1,10 @@
 .searchbar-div{
     position: relative;
-    width:30%   
-    
+    width:30%      
+}
+
+.check1{
+    color:red !important
 }
 
 .search-bar{
@@ -28,16 +31,15 @@
 }
 
 #close-icon{
-    height: 32px;
-    width: 28px;
+    height: 2rem;
+    width: 1.6rem;
     color: var(--font-color);
-
 }
 
 #menu-icon{
-    height: 32px;
-    width: 28px;
-     color: var(--font-color);
+    height: 2rem;
+    width: 1.6rem;
+    color: var(--font-color); 
 }
 
 .showSidebar{
@@ -45,9 +47,8 @@
     right: 0%;
     top:100%;
     z-index:12;
-    color: var(--font-color);
-    background-color:var(--secondary-color) ;
-    width: 15rem;
+    background-color:var(--secondary-color);
+    width: 20rem;
     height:100vh;
 }
 .hideSidebar{
@@ -56,11 +57,14 @@
 
 #header-div{
     width:100%;
-    /* background-color:var(--secondary-color) ; */
     color: var(--font-color);
     position:relative;
     z-index: 1;
-    padding-bottom:10px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
 }
 
 input:focus{
@@ -75,11 +79,16 @@ input:focus{
     display: flex;
     align-items: center;
     margin-left: 10px;
+    color: var(--font-color);
 
     
 }
 .sidebar-section > p{
     margin:7px 10px;
+}
+
+.style-nav-link{
+    color: var(--primary-color);
 }
 
 .icon{

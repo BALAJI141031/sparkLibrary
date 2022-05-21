@@ -2,16 +2,19 @@ import "./index.css";
 import { VideoCard } from "../../components";
 
 import { useEffect, useState } from "react";
-import { useNavigate, usePlayVideo } from "../../customHooks";
+import {
+  useNavigate,
+  usePlayVideo,
+  useVideoAnalytics,
+} from "../../customHooks";
 import { privateGetRequest, privateDeleteRequest } from "../../serverCalls";
 import { useParams } from "react-router-dom";
 import { AiOutlineDelete } from "../../icons";
 
-
 function WatchLater() {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
-  const navigate = useNavigate();
+  const { dispatchAnalytics } = useVideoAnalytics();
   // get me watch later videos from db
   useEffect(() => {
     (async () => {
@@ -149,6 +152,7 @@ function MyPlaylist(params) {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
+  const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -169,6 +173,7 @@ function MyPlaylist(params) {
 
   const playUserRequireVideo = (video) => {
     setStreamingVideo(video);
+    // dispatchAnalytics({ type: "liked", payload: false });
     navigate("/play-videos");
   };
 
@@ -193,6 +198,7 @@ function MyPlaylist(params) {
 function LikedVideos(params) {
   const [likedVideos, setLikedVideos] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
+  const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -209,6 +215,7 @@ function LikedVideos(params) {
 
   const playUserRequireVideo = (video) => {
     setStreamingVideo(video);
+    dispatchAnalytics({ type: "liked", payload: false });
     navigate("/play-videos");
   };
 
