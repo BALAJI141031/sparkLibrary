@@ -8,7 +8,7 @@
 
 .snackbar{
     position: fixed;
-    z-index: 999;
+    z-index: 99;
     right: 3%;
     width: 15rem;
     padding-left: 10px;

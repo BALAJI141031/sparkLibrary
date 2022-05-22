@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlayVideo, useVideoAnalytics } from "../../customHooks";
 import { privateDeleteRequest, privateGetRequest } from "../../serverCalls";
 function VideoCard(props) {
-  const { video, anlyticCategory, setUi } = props;
+  const { video, anlyticCategory, setUi, id: playlistId } = props;
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
   const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
@@ -27,12 +27,13 @@ function VideoCard(props) {
       badge = <MdDelete />;
       break;
     default:
-      badge = <BsFillCaretRightFill />;
+      badge = <MdDelete />;
   }
 
   // removing video from respective analytic routes
   const removeVideo = async (video, anlyticCategory) => {
     let path;
+    let categoryToDelete;
     switch (anlyticCategory) {
       case "like":
         path = "/api/user/likes/";
@@ -43,17 +44,30 @@ function VideoCard(props) {
       case "history":
         path = "/api/user/history/";
         break;
+      case "playlist":
+        path = `/api/user/playlists/${playlistId}/${video._id}`;
+        break;
       default:
         path = "/api/user/playlists/";
     }
-    path = path + video._id;
-    const categoryToDelete = path.split("/")[3];
-    try {
-      let response = await privateDeleteRequest(path);
-      let data = "data";
-      setUi([...response[data][categoryToDelete]]);
-    } catch (e) {
-      console.log(e);
+    if (anlyticCategory !== "playlist") {
+      path = path + video._id;
+      categoryToDelete = path.split("/")[3];
+      try {
+        let response = await privateDeleteRequest(path);
+        let data = "data";
+        setUi([...response[data][categoryToDelete]]);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      try {
+        let response = await privateDeleteRequest(path);
+        console.log(response, "deletedd playlists");
+        setUi(response.data.playlist.videos);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 

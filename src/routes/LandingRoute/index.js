@@ -71,12 +71,7 @@ function LandingRoute() {
 
         <div className="most-viewed-videos">
           {mostStreamedVideos.map((video) => (
-            <div
-            // onClick={() => {
-            //   setStreamingVideo(video);
-            //   navigate(`/play-videos`);
-            // }}
-            >
+            <div>
               <VideoCard video={video} />
             </div>
           ))}

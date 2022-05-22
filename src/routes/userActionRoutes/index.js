@@ -13,14 +13,11 @@ import { AiOutlineDelete } from "../../icons";
 
 function WatchLater() {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
-  const { setStreamingVideo } = usePlayVideo();
-  const { dispatchAnalytics } = useVideoAnalytics();
   // get me watch later videos from db
   useEffect(() => {
     (async () => {
       try {
         const response = await privateGetRequest("/api/user/watchlater");
-        // dispatchCountry({ type: "AllVideos", payload: response.data.videos });
         setWatchLaterVideos(response.data.watchlater);
       } catch (e) {
         console.log(e);
@@ -54,13 +51,10 @@ function WatchLater() {
 
 function History(params) {
   const [history, setHistory] = useState([]);
-  const { setStreamingVideo } = usePlayVideo();
-  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
         const response = await privateGetRequest("/api/user/history");
-        // dispatchCountry({ type: "AllVideos", payload: response.data.videos });
         setHistory(response.data.history);
       } catch (e) {
         console.log(e);
@@ -119,16 +113,25 @@ function MyPlaylists(params) {
         console.log(e);
       }
     })();
-  }, []);
+  }, [playlists]);
+
+  // delete required playlist
+  const deletePlaylist = async (playlistId) => {
+    try {
+      const deletePlaylist = await privateDeleteRequest(
+        `/api/user/playlists/${playlistId}`
+      );
+      setPlaylists(deletePlaylist.data.playlists);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
-    <div className="p-t">
-      <div className="flex-H-space-around ">
-        <h3 className="text-m">My Playlists</h3>
-        <button className="text-m btn primary-icon-btn">
-          Create New Playlist
-        </button>
-      </div>
+    <div className="p-t ">
+      <center>
+        <h1>My Playlists</h1>
+      </center>
       <div className="user-action-div">
         {playlists.length !== 0 ? (
           playlists.map((playlist) => (
@@ -137,11 +140,16 @@ function MyPlaylists(params) {
                 <h4 className="text-m">{playlist.title}</h4>
                 <p className="text-m">videos count:{playlist.videos.length}</p>
               </div>
-              <AiOutlineDelete className="icon-lg" />
+              <AiOutlineDelete
+                className="icon-lg"
+                onClick={() => deletePlaylist(playlist._id)}
+              />
             </div>
           ))
         ) : (
-          <p>empty </p>
+          <center>
+            <p>empty </p>
+          </center>
         )}
       </div>
     </div>
@@ -158,8 +166,6 @@ function MyPlaylist(params) {
   useEffect(() => {
     (async () => {
       try {
-        console.log("came here");
-        // const response = await privateGetRequest(`/api/user/playlists/${id}`);
         const response = await privateGetRequest(`/api/user/playlists`);
         const userRequirePlaylist = response.data.playlists.filter(
           (playlist) => playlist._id == id
@@ -173,21 +179,40 @@ function MyPlaylist(params) {
 
   const playUserRequireVideo = (video) => {
     setStreamingVideo(video);
-    // dispatchAnalytics({ type: "liked", payload: false });
     navigate("/play-videos");
+  };
+
+  // delete playlist and navigate to all playlists
+
+  const deletePlaylist = async (playlistId) => {
+    try {
+      const deletePlaylist = await privateDeleteRequest(
+        `/api/user/playlists/${playlistId}`
+      );
+      navigate("/my-playlists");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <div className="p-t">
       <div className="flex-H-space-around ">
         <h3 className="text-m">My Playlist</h3>
-        <button className="text-m">Delete Playlist</button>
+        <button className="primary-cta" onClick={() => deletePlaylist(id)}>
+          Delete this Playlist
+        </button>
       </div>
       <div className="user-action-div">
         {playlist.length !== 0 &&
           playlist.map((video) => (
             <div>
-              <VideoCard video={video} />
+              <VideoCard
+                video={video}
+                anlyticCategory={"playlist"}
+                setUi={setPlaylist}
+                id={id}
+              />
             </div>
           ))}
       </div>
@@ -205,7 +230,6 @@ function LikedVideos(params) {
     (async () => {
       try {
         const response = await privateGetRequest("/api/user/likes");
-        // dispatchCountry({ type: "AllVideos", payload: response.data.videos });
         setLikedVideos(response.data.likes);
       } catch (e) {
         console.log(e);

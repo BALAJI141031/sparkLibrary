@@ -9,7 +9,7 @@ function HeroBanner({ hero, category }) {
       <h1>{hero ? `Spark Wind` : category.categoryName}</h1>
       {hero && (
         <h1 className="heading-margin">
-          Dedicated International Relations Niche To Civils Aspirant's
+          Dedicated International Relations Library
         </h1>
       )}
       {category && <h2>{category.description}</h2>}

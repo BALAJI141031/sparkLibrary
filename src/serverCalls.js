@@ -50,7 +50,7 @@ const privatePostRequest = async (path, video) => {
     );
     return response;
   } catch (e) {
-    console.error(e);
+    throw e;
   }
 };
 

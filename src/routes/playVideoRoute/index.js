@@ -131,23 +131,6 @@ export default function PlayVideo() {
     }
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const likedVideos = await privateGetRequest("/api/user/likes");
-  //     console.log(likedVideos.data.likes);
-  //     if (likedVideos.data.likes.length !== 0) {
-  //       for (let i = 0; i < likedVideos.data.likes.length; i++) {
-  //         if (likedVideos.data.likes[i]._id === streamingVideo._id) {
-  //           dispatchAnalytics({ type: "liked", payload: true });
-  //           console.log(likedVideos.data.likes[i]._id, streamingVideo._id);
-  //         } else {
-  //           // dispatchAnalytics({ type: "liked", payload: false });
-  //         }
-  //       }
-  //     }
-  //   })();
-  // }, []);
-
   // fetching exisitng playlists
 
   const getExistingPlaylists = () => {
@@ -170,8 +153,21 @@ export default function PlayVideo() {
           streamingVideo
         );
         dispatchPlaylist({ type: "closeModal" });
-      } catch (e) {
-        console.log(e);
+      } catch (err) {
+        let text;
+        if (err.response.status === 409) {
+          text = "Video Already Exist";
+        } else if (err.response.status === 404) {
+          text = "User Not Found";
+          // need to logout here
+        }
+        setSnackbar({
+          ...snackbar,
+          status: true,
+          text,
+          type: "error-toast",
+        });
+        hideSnackbar(setSnackbar);
       }
     })();
   };
@@ -319,13 +315,13 @@ export default function PlayVideo() {
             </div>
           </div>
           <button
-            className="btn secondary-icon-btn"
+            className="primary-modal-cta"
             onClick={() => getExistingPlaylists()}
           >
             NO
           </button>
           <button
-            className="btn secondary-icon-btn"
+            className="primary-modal-cta"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Yes
@@ -349,13 +345,14 @@ export default function PlayVideo() {
             </div>
           </div>
           <button
-            className="btn secondary-icon-btn"
+            className="primary-modal-cta"
             onClick={() => setNewPlaylist()}
           >
             Add
           </button>
         </div>
       </div>
+
       {/* add to existing playlists */}
 
       <div id={playlists ? "show-modal" : "hide-modal"}>
@@ -374,7 +371,9 @@ export default function PlayVideo() {
             {exisitngPlaylists.length !== 0
               ? exisitngPlaylists.map((playlist) => (
                   <div
-                    onClick={() => setToExistingPlaylist(playlist)}
+                    onClick={() =>
+                      setToExistingPlaylist(playlist, streamingVideo)
+                    }
                     className="playlist-title"
                   >
                     {playlist.title}
@@ -383,14 +382,12 @@ export default function PlayVideo() {
               : "No playlists found create new"}
           </div>
 
-          {exisitngPlaylists.length === 0 && (
-            <button
-              className="btn secondary-icon-btn"
-              onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
-            >
-              Create New playlist
-            </button>
-          )}
+          <button
+            className="primary-modal-cta"
+            onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
+          >
+            Create New playlist
+          </button>
         </div>
       </div>
     </div>
