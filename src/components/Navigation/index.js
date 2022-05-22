@@ -19,7 +19,6 @@ function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const { snackbar, setSnackbar } = useSnackbar();
 
-  console.log(snackbar, setSnackbar, "check this on priority");
   // toggle sidebar
   const toggleSidebar = () => setSidebar((isSideActive) => !isSideActive);
   return (

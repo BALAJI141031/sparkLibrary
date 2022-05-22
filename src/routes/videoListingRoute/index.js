@@ -59,16 +59,19 @@ export default function VideoListingRoute() {
     setStreamingVideo(video);
     try {
       const likedVideos = await privateGetRequest("/api/user/likes");
+      let flag = 0;
       if (likedVideos.data.likes.length !== 0) {
         for (let i = 0; i < likedVideos.data.likes.length; i++) {
           if (likedVideos.data.likes[i]._id === video._id) {
             dispatchAnalytics({ type: "liked", payload: true });
-            console.log(likedVideos.data.likes[i]._id, video._id);
+            break;
           } else {
             console.log("elseblock");
-            dispatchAnalytics({ type: "liked", payload: false });
+            flag++;
           }
         }
+        if (flag === likedVideos.data.likes.length)
+          dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
       console.log(e);

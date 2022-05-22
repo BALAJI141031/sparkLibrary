@@ -14,7 +14,6 @@ function Login(props) {
   const location = useLocation();
   const { snackbar, setSnackbar } = useSnackbar();
   let from = location?.state?.from?.pathname || "/";
-  console.log();
   const navigate = useNavigate();
   // login user
   console.log(password, "=-----------------", email);

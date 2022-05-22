@@ -6,11 +6,12 @@ import {
   MdRemoveCircle,
 } from "../../icons";
 import { useNavigate } from "react-router-dom";
-import { usePlayVideo } from "../../customHooks";
-import { privateDeleteRequest } from "../../serverCalls";
+import { usePlayVideo, useVideoAnalytics } from "../../customHooks";
+import { privateDeleteRequest, privateGetRequest } from "../../serverCalls";
 function VideoCard(props) {
   const { video, anlyticCategory, setUi } = props;
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
+  const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 
   const { title, thumbnailImg, creator, listens, releasedDate, GIF } = video;
@@ -56,6 +57,32 @@ function VideoCard(props) {
     }
   };
 
+  // play ,ost streamed video
+
+  const playMostStreamedVideo = async () => {
+    setStreamingVideo(video);
+    navigate(`/play-videos`);
+    try {
+      const likedVideos = await privateGetRequest("/api/user/likes");
+      let flag = 0;
+      if (likedVideos.data.likes.length !== 0) {
+        for (let i = 0; i < likedVideos.data.likes.length; i++) {
+          if (likedVideos.data.likes[i]._id === video._id) {
+            dispatchAnalytics({ type: "liked", payload: true });
+            break;
+          } else {
+            console.log("elseblock");
+            flag++;
+          }
+        }
+        if (flag === likedVideos.data.likes.length)
+          dispatchAnalytics({ type: "liked", payload: false });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="video-card-badge">
       <div className={!anlyticCategory ? "video-card" : "video-card-for-badge"}>
@@ -72,13 +99,7 @@ function VideoCard(props) {
           {listens} streams|{releasedDate}
         </p>
         <center>
-          <button
-            className="cta"
-            onClick={() => {
-              setStreamingVideo(video);
-              navigate(`/play-videos`);
-            }}
-          >
+          <button className="cta" onClick={playMostStreamedVideo}>
             <BsFillCaretRightFill className="mr-r" />
             Watch Now
           </button>

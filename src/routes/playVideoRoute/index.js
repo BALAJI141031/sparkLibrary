@@ -1,12 +1,14 @@
 import "./index.css";
 
 import { Video, VideoCard } from "../../components";
+import { hideSnackbar } from "../../components/snackbar";
 import {
   useVideoListing,
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
   useIsVideoLiked,
+  useSnackbar,
 } from "../../customHooks";
 import {
   privatePostRequest,
@@ -24,6 +26,7 @@ import {
 import { useEffect, useState } from "react";
 
 export default function PlayVideo() {
+  const { snackbar, setSnackbar } = useSnackbar();
   const { newPlaylist, playlistModal, playlists, dispatchPlaylist } =
     usePlaylists();
 
@@ -46,19 +49,68 @@ export default function PlayVideo() {
 
   // watch later
   const toggleWatchLaterVideo = async (video) => {
+    console.log("coming here");
     try {
-      if (!WatchLater) {
+      const watchLaterVideos = await privateGetRequest("/api/user/watchlater");
+      if (watchLaterVideos.data.watchlater.length !== 0) {
+        let flag = 0;
+        for (let i = 0; i < watchLaterVideos.data.watchlater.length; i++) {
+          if (watchLaterVideos.data.watchlater[i]._id === video._id) {
+            setSnackbar({
+              ...snackbar,
+              status: true,
+              text: "Already Added To Watch Later!",
+              type: "warn-toast",
+            });
+            hideSnackbar(setSnackbar);
+            dispatchAnalytics({ type: "watchLater", payload: false });
+            break;
+          } else {
+            flag++;
+          }
+        }
+        if (flag === watchLaterVideos.data.watchlater.length) {
+          dispatchAnalytics({ type: "watchLater", payload: false });
+          const watchLaterResponse = await privatePostRequest(
+            "/api/user/watchlater",
+            video
+          );
+          setSnackbar({
+            ...snackbar,
+            status: true,
+            text: "Added To Watch Later!",
+            type: "success-toast",
+          });
+          hideSnackbar(setSnackbar);
+        }
+      } else {
         const watchLaterResponse = await privatePostRequest(
           "/api/user/watchlater",
           video
         );
-        dispatchAnalytics({ type: "watchLater", payload: true });
-      } else {
-        // const deleteWatchLaterRes = await privateDeleteRequest(
-        //   `/api/user/watchlater/${video._id}`
-        // );
-        // dispatchAnalytics({ type: "watchLater", payload: false });
+        setSnackbar({
+          ...snackbar,
+          status: true,
+          text: "Added To Watch Later!",
+          type: "success-toast",
+        });
+        hideSnackbar(setSnackbar);
       }
+
+      // if (!WatchLater) {
+      // } else {
+      //   setSnackbar({
+      //     ...snackbar,
+      //     status: true,
+      //     text: "Already Added To Watch Later!",
+      //     type: "warn-toast",
+      //   });
+      //   hideSnackbar(setSnackbar);
+      //   // const deleteWatchLaterRes = await privateDeleteRequest(
+      //   //   `/api/user/watchlater/${video._id}`
+      //   // );
+      //   // dispatchAnalytics({ type: "watchLater", payload: false });
+      // }
     } catch (e) {
       console.error(e);
     }

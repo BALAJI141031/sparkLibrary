@@ -1,7 +1,9 @@
 
 #success-toast{
-    background-color:rgb(185, 185, 248);
-    
+    background-color:#F73D93;
+    color:#16003B;
+    font-size:bolder ;
+    font-weight: 800; 
 }
 
 .snackbar{
@@ -15,12 +17,16 @@
 
 #error-toast{
 background-color: rgb(224, 85, 85);
-    color:var(--pale-white); 
+color:#16003B;
+font-size:bolder ;
+font-weight: 800;
 }
 
 #warn-toast{
    background-color: rgb(226, 200, 49);
-    color:var(--pale-white);  
+    color:#16003B;
+    font-size:bolder;
+    font-weight: 800; 
 }
 
 @keyframes slideMe {
