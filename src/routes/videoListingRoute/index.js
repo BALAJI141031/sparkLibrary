@@ -9,7 +9,6 @@ import {
   usePlayVideo,
   useVideoAnalytics,
 } from "../../customHooks";
-import { BiSearchAlt2 } from "../../icons";
 
 const categoryList = [
   "All",

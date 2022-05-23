@@ -10,7 +10,6 @@ function LandingRoute() {
       featuredCategories: [],
       mostStreamedVideos: [],
     });
-  const { setStreamingVideo, streamingVideo } = usePlayVideo();
   useEffect(() => {
     (async () => {
       try {

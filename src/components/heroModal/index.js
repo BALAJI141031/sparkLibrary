@@ -12,7 +12,6 @@ function HeroBanner({ hero, category }) {
           Dedicated International Relations Library
         </h1>
       )}
-      {category && <h2>{category.description}</h2>}
       {hero && (
         <button className="cta" onClick={() => navigate("/videos/AllVideos")}>
           Explore
