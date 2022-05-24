@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const publicGetRequest = async (path) => {
   try {
@@ -11,12 +12,9 @@ const publicGetRequest = async (path) => {
 
 const publicPostRequest = async (path, payload) => {
   try {
-    console.log(path, payload, "============>");
     const response = await axios.post(path, payload);
-    console.log("it is not printing");
     return response;
   } catch (e) {
-    console.log("coming directly here", e);
     throw e;
   }
 };
@@ -25,8 +23,7 @@ const privateGetRequest = async (path) => {
   try {
     const response = await axios.get(path, {
       headers: {
-        authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3MTUxN2NmOS05MTg4LTRlNGYtOWM1MS0xMzMxZWE1ZThkZmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.WTkYnS_dAUXq8sBn-GKoX0BC6ZJKNpL8Q_CNUzlebJI",
+        authorization: Cookies.get("jwt_token"),
       },
     });
     return response;
@@ -37,14 +34,12 @@ const privateGetRequest = async (path) => {
 
 const privatePostRequest = async (path, video) => {
   try {
-    console.log(path, video, "failing to make post");
     const response = await axios.post(
       path,
       { video },
       {
         headers: {
-          authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3MTUxN2NmOS05MTg4LTRlNGYtOWM1MS0xMzMxZWE1ZThkZmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.WTkYnS_dAUXq8sBn-GKoX0BC6ZJKNpL8Q_CNUzlebJI",
+          authorization: Cookies.get("jwt_token"),
         },
       }
     );
@@ -58,14 +53,13 @@ const privateDeleteRequest = async (path) => {
   try {
     const response = await axios.delete(path, {
       headers: {
-        authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3MTUxN2NmOS05MTg4LTRlNGYtOWM1MS0xMzMxZWE1ZThkZmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.WTkYnS_dAUXq8sBn-GKoX0BC6ZJKNpL8Q_CNUzlebJI",
+        authorization: Cookies.get("jwt_token"),
       },
     });
 
     return response;
   } catch (e) {
-    console.log(e, "came here");
+    throw e;
   }
 };
 
@@ -76,8 +70,7 @@ const createPlaylistReq = async (path, playlist) => {
       { playlist },
       {
         headers: {
-          authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3MTUxN2NmOS05MTg4LTRlNGYtOWM1MS0xMzMxZWE1ZThkZmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.WTkYnS_dAUXq8sBn-GKoX0BC6ZJKNpL8Q_CNUzlebJI",
+          authorization: Cookies.get("jwt_token"),
         },
       }
     );

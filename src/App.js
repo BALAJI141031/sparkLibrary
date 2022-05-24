@@ -17,10 +17,11 @@ import {
 } from "./routes";
 function App() {
   return (
-    <div className="">
+    <>
       <div className="navbar-div">
         <Navbar />
       </div>
+
       <Routes>
         <Route path="/" element={<LandingRoute />} />
         <Route path="/videos/:country" element={<VideoListingRoute />} />
@@ -28,48 +29,48 @@ function App() {
         <Route
           path="/watch-later"
           element={
-            // <RequireAuth>
-            <WatchLater />
-            // </RequireAuth>
+            <RequireAuth>
+              <WatchLater />
+            </RequireAuth>
           }
         />
         <Route
           path="/history"
           element={
-            // <RequireAuth>
-            <History />
-            // </RequireAuth>
+            <RequireAuth>
+              <History />
+            </RequireAuth>
           }
         />
         <Route
           path="/my-playlists"
           element={
-            // <RequireAuth>
-            <MyPlaylists />
-            // </RequireAuth>
+            <RequireAuth>
+              <MyPlaylists />
+            </RequireAuth>
           }
         />
         <Route
           path="/my-playlist/:id"
           element={
-            // <RequireAuth>
-            <MyPlaylist />
-            // </RequireAuth>
+            <RequireAuth>
+              <MyPlaylist />
+            </RequireAuth>
           }
         />
         <Route
           path="/liked-videos"
           element={
-            // <RequireAuth>
-            <LikedVideos />
-            // </RequireAuth>
+            <RequireAuth>
+              <LikedVideos />
+            </RequireAuth>
           }
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mock" element={<Mockman />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

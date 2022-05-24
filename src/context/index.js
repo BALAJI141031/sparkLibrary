@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer, useState } from "react";
-import Cookies from "js-cookie";
 const videoListingContext = createContext();
 
 const VideoListingProvider = ({ children }) => {
@@ -85,7 +84,6 @@ const VideoPlayProvider = ({ children }) => {
   );
 };
 const usePlayVideo = () => useContext(playVideoContext);
-
 
 // user action videos
 const analyticVideosContext = createContext();

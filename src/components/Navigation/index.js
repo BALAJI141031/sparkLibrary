@@ -1,4 +1,5 @@
 import "./index.css";
+import Cookies from "js-cookie";
 import {
   GiHamburgerMenu,
   BiSearchAlt2,
@@ -11,13 +12,24 @@ import {
   RiPlayListLine,
 } from "../../icons";
 import { useState } from "react";
-import { useNavigate, useSnackbar } from "../../customHooks";
-import { showSnackbar, hideSnackbar } from "../snackbar";
-import { Link, NavLink } from "react-router-dom";
-
+import { useSnackbar, useAuth } from "../../customHooks";
+import { showSnackbar } from "../snackbar";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const { snackbar, setSnackbar } = useSnackbar();
+  const { snackbar } = useSnackbar();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  // logout
+  const logOut = () => {
+    if (isLoggedIn) {
+      setIsLoggedIn(false);
+      Cookies.remove("jwt_token");
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  };
 
   // toggle sidebar
   const toggleSidebar = () => setSidebar((isSideActive) => !isSideActive);
@@ -91,7 +103,9 @@ function Navbar() {
         </NavLink>
         <hr />
         <center>
-          <button className="cta">Login</button>
+          <button className="cta" onClick={logOut}>
+            {isLoggedIn ? "LogOut" : "Login"}
+          </button>
         </center>
       </div>
       {snackbar.status &&

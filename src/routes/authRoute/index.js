@@ -17,7 +17,7 @@ function Login() {
   const location = useLocation();
   const emailInput = useRef(null);
   const passwordInput = useRef(null);
-  const { snackbar, setSnackbar, hideSnackbar } = useSnackbar();
+  const { snackbar, setSnackbar } = useSnackbar();
   const [validatedCredentials, validteCredentials] = useState({
     email: false,
     password: false,
@@ -45,6 +45,7 @@ function Login() {
           email: emailInput.current.value,
           password: passwordInput.current.value,
         });
+        Cookies.set("jwt_token", loginResponse.data.encodedToken);
         setSnackbar({
           ...snackbar,
           status: true,
@@ -276,6 +277,7 @@ function Signup() {
           password: detials.password,
           displayname: detials.displayname,
         });
+        Cookies.set("jwt_token", signupResponse.data.encodedToken);
         setSnackbar({
           ...snackbar,
           status: true,
