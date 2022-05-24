@@ -152,14 +152,12 @@ const usePlaylists = () => useContext(playlistContext);
 
 // auth context
 
-const authContext = createContext({ jwtToken: "" });
+const authContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [jwtToken, setJwtToken] = useState(Cookies.get("jwt_token"));
-
   return (
-    <authContext.Provider value={{ jwtToken, isLoggedIn, setIsLoggedIn }}>
+    <authContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
     </authContext.Provider>
   );

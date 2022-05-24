@@ -3,7 +3,6 @@ import { useAuth } from "../customHooks";
 
 const RequireAuth = ({ children }) => {
   const { isLoggedIn } = useAuth();
-  console.log("check 1//////////////////////////////////////");
   const location = useLocation();
   return isLoggedIn ? (
     children

@@ -14,10 +14,10 @@ const publicPostRequest = async (path, payload) => {
     console.log(path, payload, "============>");
     const response = await axios.post(path, payload);
     console.log("it is not printing");
-    return "ok";
+    return response;
   } catch (e) {
     console.log("coming directly here", e);
-    return e;
+    throw e;
   }
 };
 

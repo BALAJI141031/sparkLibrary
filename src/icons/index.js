@@ -13,6 +13,7 @@ import {
   MdWatchLater,
   MdRemoveCircle,
   MdDelete,
+  MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import { CgPlayListAdd } from "react-icons/cg";
 import { FaRegBell } from "react-icons/fa";
@@ -47,4 +48,5 @@ export {
   BsHandThumbsDownFill,
   MdRemoveCircle,
   MdDelete,
+  MdOutlineKeyboardArrowRight,
 };
