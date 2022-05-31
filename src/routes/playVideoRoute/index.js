@@ -9,6 +9,7 @@ import {
   usePlaylists,
   useIsVideoLiked,
   useSnackbar,
+  useAuth
 } from "../../customHooks";
 import {
   privatePostRequest,
@@ -35,6 +36,7 @@ export default function PlayVideo() {
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
   const { filteredVideos } = useVideoListing();
   const { WatchLater, liked, dispatchAnalytics } = useVideoAnalytics();
+  const {isLoggedIn}=useAuth()
 
   useEffect(() => {
     (async () => {
@@ -49,28 +51,42 @@ export default function PlayVideo() {
 
   // watch later
   const toggleWatchLaterVideo = async (video) => {
-    console.log("coming here");
+   
     try {
-      const watchLaterVideos = await privateGetRequest("/api/user/watchlater");
-      if (watchLaterVideos.data.watchlater.length !== 0) {
-        let flag = 0;
-        for (let i = 0; i < watchLaterVideos.data.watchlater.length; i++) {
-          if (watchLaterVideos.data.watchlater[i]._id === video._id) {
+      if (isLoggedIn) {
+        const watchLaterVideos = await privateGetRequest("/api/user/watchlater");
+        if (watchLaterVideos.data.watchlater.length !== 0) {
+          let flag = 0;
+          for (let i = 0; i < watchLaterVideos.data.watchlater.length; i++) {
+            if (watchLaterVideos.data.watchlater[i]._id === video._id) {
+              setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Already Added To Watch Later!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
+              dispatchAnalytics({ type: "watchLater", payload: false });
+              break;
+            } else {
+              flag++;
+            }
+          }
+          if (flag === watchLaterVideos.data.watchlater.length) {
+            dispatchAnalytics({ type: "watchLater", payload: false });
+            const watchLaterResponse = await privatePostRequest(
+              "/api/user/watchlater",
+              video
+            );
             setSnackbar({
               ...snackbar,
               status: true,
-              text: "Already Added To Watch Later!",
-              type: "warn-toast",
+              text: "Added To Watch Later!",
+              type: "success-toast",
             });
             hideSnackbar(setSnackbar);
-            dispatchAnalytics({ type: "watchLater", payload: false });
-            break;
-          } else {
-            flag++;
           }
-        }
-        if (flag === watchLaterVideos.data.watchlater.length) {
-          dispatchAnalytics({ type: "watchLater", payload: false });
+        } else {
           const watchLaterResponse = await privatePostRequest(
             "/api/user/watchlater",
             video
@@ -83,16 +99,13 @@ export default function PlayVideo() {
           });
           hideSnackbar(setSnackbar);
         }
+        
       } else {
-        const watchLaterResponse = await privatePostRequest(
-          "/api/user/watchlater",
-          video
-        );
         setSnackbar({
           ...snackbar,
           status: true,
-          text: "Added To Watch Later!",
-          type: "success-toast",
+          text: "Please Login To Add To WatchLater Videos!",
+          type: "warn-toast",
         });
         hideSnackbar(setSnackbar);
       }
@@ -119,13 +132,24 @@ export default function PlayVideo() {
   // liked and dislike
   const toggleLikedVideo = async (video) => {
     try {
-      if (!liked) {
+      if (isLoggedIn) {
+         if (!liked) {
         await privatePostRequest("/api/user/likes", video);
         dispatchAnalytics({ type: "liked", payload: true });
       } else {
         await privateDeleteRequest(`/api/user/likes/${video._id}`);
         dispatchAnalytics({ type: "liked", payload: false });
       }
+      } else {
+         setSnackbar({
+          ...snackbar,
+          status: true,
+          text: "Please Login To Like Videos!",
+          type: "warn-toast",
+        });
+        hideSnackbar(setSnackbar);
+      }
+     
     } catch (e) {
       console.error(e);
     }
@@ -140,7 +164,7 @@ export default function PlayVideo() {
         setExistingPlaylists([...response.data.playlists]);
         dispatchPlaylist({ type: "addToPlaylist" });
       } catch (e) {
-        console.log(e);
+        alertUser("You dont have Playlists Create New!")
       }
     })();
   };
@@ -192,6 +216,9 @@ export default function PlayVideo() {
         );
 
         dispatchPlaylist({ type: "closeModal" });
+        alertUser("Playlist Created Successfully")
+        setNewPlaylistName("")
+
       } catch (e) {
         console.log(e);
       }
@@ -227,6 +254,18 @@ export default function PlayVideo() {
     }
   };
 
+
+  // alert user for login while creating playlist
+  function alertUser  (msg) {
+    setSnackbar({
+          ...snackbar,
+          status: true,
+          text: msg,
+          type: "warn-toast",
+        });
+        hideSnackbar(setSnackbar);
+  }
+
   return (
     <div className="play-video-section">
       <div className="play-video">
@@ -256,7 +295,7 @@ export default function PlayVideo() {
               </div>
               <div
                 className="video-actions"
-                onClick={() => dispatchPlaylist({ type: "openModal" })}
+                onClick={() => isLoggedIn ? dispatchPlaylist({ type: "openModal" }) : alertUser("Please Login To Create Playlist!")}
               >
                 <CgPlayListAdd />
                 <p>Save</p>
@@ -336,6 +375,7 @@ export default function PlayVideo() {
               type="text"
               placeholder="give me playlist name"
               onChange={setPlaylistName}
+              value={playlistName}
             />
             <div
               id="closeBtn"

@@ -20,6 +20,7 @@ const publicPostRequest = async (path, payload) => {
 };
 
 const privateGetRequest = async (path) => {
+  
   try {
     const response = await axios.get(path, {
       headers: {
