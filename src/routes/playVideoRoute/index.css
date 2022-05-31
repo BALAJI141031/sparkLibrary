@@ -1,0 +1,146 @@
+.play-video-section hr{
+    margin:0px
+}
+.video-actions{
+    display: flex;
+    align-items: center;
+    margin: -10px 2px 0px 10px;    
+}
+.video-actions > p {
+    margin-left:5px;
+    margin-top: 17.5px;
+
+}
+
+.video-actions:hover{
+    cursor: pointer;
+}
+
+.desciption h5{
+    margin:0px 2px 0px 2px
+}
+.desciption > div > p{
+    margin-top:5px;
+    margin-bottom: 10px;
+
+}
+
+.m-left{
+     display:flex;
+     justify-content: end;
+     margin-right:10px
+}
+
+.recomended-videos{
+    overflow-y:scroll
+
+}
+
+.play-video{
+    /* width: 100%; */
+    margin: 0px 4rem 0px 5rem;
+}
+
+.heading-m{
+    margin:4px
+}
+
+.profil{
+    margin-right:auto ;
+}
+
+.profile-pic{
+    width:35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px 5px 10px 10px
+}
+
+.comments-div{
+    display: none;
+}
+
+.comment-box{
+    display: block;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    width: 60vw;
+}
+
+.comment-box:focus {
+    outline: none;
+  }
+
+.subscription-div> div{
+    margin-right:15px;
+    border-style:Solid;
+    padding:5px;
+    border-width:2px
+}
+
+.comments-div{
+    margin-top:12rem ;
+}
+
+#show-modal{
+    position: fixed;
+    display:block;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+    padding: 1em;
+    color: var(--pale-white);
+}
+#hide-modal{
+    display:none;
+} 
+
+#show-modal button {
+    margin:5px
+}
+
+.modal-heading {
+    margin: 0px 0px 20px 0px;
+}
+
+.check-div{
+    background-color: blueviolet;
+}
+
+.playlist-title{
+    margin: 0px 0px 15px 15px;
+    cursor: pointer;
+}
+
+#modal-content  button {
+    min-width: 10rem;
+    max-width: max-content;
+}
+
+@media screen and (min-width:768px) {
+
+    .play-video-section{
+        display: grid;
+        grid-template-columns:max-content 0.6fr;
+         padding-top:5%
+    }
+
+    .recomended-videos{
+        overflow-y:scroll;
+        margin-left:20px
+    }
+
+    .comments-div{
+        display:block
+    }
+
+}

@@ -1,0 +1,52 @@
+.video-card{
+    margin:10px 0px 10px 10px;
+    background-color: var(--secondary-color); 
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--font-color);
+}
+
+.video-card-for-badge{
+    /* margin:10px 0px 0px 0px; */
+    grid-column:1/-1;
+    grid-row:1/2;
+    background-color: var(--secondary-color);
+    color:var(--font-color);
+    /* padding: 10px; */
+    /* gap: 1rem; */
+}
+
+.video-card-badge{
+    display:grid;  
+}
+
+.video-badge{
+    grid-column: 1/-1;
+    grid-row:1/2;
+    justify-self: end;
+    color: var(--primary-color); 
+    /* margin: 20px 20px 0px 0px; */
+    font-size: 2rem;
+    cursor: pointer;
+    height: max-content;
+    /* width:max-content    */
+}
+
+.text-margin{
+    margin:5px
+}
+
+.mr-r{
+    /* margin-right: 10px; */
+}
+
+.btn-cta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    font-size: 1.2rem;
+    padding:5px;
+    color: var(--primary-color);
+
+}

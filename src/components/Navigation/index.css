@@ -1,0 +1,98 @@
+.searchbar-div{
+    position: relative;
+    width:30%      
+}
+
+.check1{
+    color:red !important
+}
+
+.search-bar{
+    padding: 0.3rem;
+    border-radius:2px;
+    margin: 0px;
+    width: 100%;    
+}
+.search-icon{
+    border:0px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0px;
+    position: absolute;
+    right:0%;
+    top:10%;
+    padding-top:2px;
+    z-index: 9;
+}
+ 
+.btn-m {
+    margin-left:15%
+}
+
+#close-icon{
+    height: 2rem;
+    width: 1.6rem;
+    color: var(--font-color);
+}
+
+#menu-icon{
+    height: 2rem;
+    width: 1.6rem;
+    color: var(--font-color); 
+}
+
+.showSidebar{
+    position: absolute;
+    right: 0%;
+    top:100%;
+    z-index:12;
+    background-color:var(--secondary-color);
+    width: 20rem;
+    height:100vh;
+}
+.hideSidebar{
+    display: none;
+}
+
+#header-div{
+    width:100%;
+    color: var(--font-color);
+    position:relative;
+    z-index: 1;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+input:focus{
+    outline: none;
+    border-style: solid;
+    border-width:3px;
+    border-radius:2px;
+    border-color: var(--primary-color);
+}
+
+.sidebar-section{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: var(--font-color);
+
+    
+}
+.sidebar-section > p{
+    margin:7px 10px;
+}
+
+.style-nav-link{
+    color: var(--primary-color);
+}
+
+.icon{
+    width:1.3rem;
+    height:1.3rem
+}
+

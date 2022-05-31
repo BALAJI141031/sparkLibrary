@@ -13,6 +13,7 @@ import { v4 as uuid } from "uuid";
  * send GET Request at /api/user/playlist
  * */
 export const getAllPlaylistsHandler = function (schema, request) {
+  console.log("hitting here")
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {

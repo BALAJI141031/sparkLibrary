@@ -1,0 +1,40 @@
+
+#success-toast{
+    background-color:#F73D93;
+    color:#16003B;
+    font-size:bolder ;
+    font-weight: 800; 
+}
+
+.snackbar{
+    position: fixed;
+    z-index: 99;
+    right: 3%;
+    width: 15rem;
+    padding-left: 10px;
+    animation: slideMe 0.5s ease-in ;
+}
+
+#error-toast{
+background-color: rgb(224, 85, 85);
+color:#16003B;
+font-size:bolder ;
+font-weight: 800;
+}
+
+#warn-toast{
+   background-color: rgb(226, 200, 49);
+    color:#16003B;
+    font-size:bolder;
+    font-weight: 800; 
+}
+
+@keyframes slideMe {
+    0%{
+        transform: skew(53deg) translateX(-500px);
+    }
+    100%{
+        transform: skew(0deg);
+
+    }
+}

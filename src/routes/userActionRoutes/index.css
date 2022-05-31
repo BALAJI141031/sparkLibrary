@@ -1,0 +1,30 @@
+
+.user-action-div{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(150px, 250px) );
+    justify-content: center;    
+}
+
+.user-action-div > div{
+    margin: 10px;
+    padding:10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--background-color);
+    color: var(--cta-font-color);
+    font-weight: 800;
+
+} 
+
+.text-m{
+    margin: 5px;
+}
+
+.user-action-video{
+    display: grid;
+}
+
+
+.p-t{
+    padding-top: 4%;
+}
