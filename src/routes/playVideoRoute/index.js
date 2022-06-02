@@ -346,7 +346,7 @@ export default function PlayVideo() {
         <div className="bg-gray-200  p-10 rounded-lg "> 
           <div className="flex  justify-between items-center">
             <h2 className="font-bold mr-5 ">Do You Want to create New Playlist</h2>  
-          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
+           <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={() => dispatchPlaylist({ type: "closeModal" })}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg> 
           </div>
           <div className="flex center-items">
           <button
@@ -376,14 +376,14 @@ export default function PlayVideo() {
               className="mr-5 p-2"
               value={playlistName}
             />
-          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
+            <svg onClick={() => dispatchPlaylist({ type: "closeModal" })} class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  
           </div>
-           <button
+           <center><button
             className="primary-modal-cta mt-5 w-60"
             onClick={() => setNewPlaylist()}
           >
             Add
-          </button>
+          </button></center>
          </div>
       </div>}
 
@@ -393,7 +393,7 @@ export default function PlayVideo() {
         <div className="bg-gray-200  p-10 rounded-lg "> 
           <div className="flex  justify-between items-center mb-5">
             <h1 className="text-lg mr-5">Your Playlists</h1>
-          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
+           <svg  onClick={() => dispatchPlaylist({ type: "closeModal" })} class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  
           </div>
           <div>
             {exisitngPlaylists.length !== 0
@@ -409,12 +409,12 @@ export default function PlayVideo() {
                 ))
               : "No playlists found create new"}
           </div>
-           <button
+           <center><button
             className="primary-modal-cta mt-5"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Create New playlist
-          </button>
+          </button></center>
          </div>
       </div>}
     </div>
