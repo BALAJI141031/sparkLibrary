@@ -342,70 +342,58 @@ export default function PlayVideo() {
           ))}
         </div>
       </div>
-      <div id={playlistModal ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw">
-            <p>Do You want to create New Playlist</p>
-            <div
-              id="closeBtn"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+       {playlistModal && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center">
+            <h2 className="font-bold mr-5 ">Do You Want to create New Playlist</h2>  
+          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
           </div>
+          <div className="flex center-items">
           <button
-            className="primary-modal-cta"
+            className="primary-modal-cta m-2 hover:bg-sky-700 w-32"
             onClick={() => getExistingPlaylists()}
           >
             NO
           </button>
-          <button
-            className="primary-modal-cta"
+            <button
+            className="primary-modal-cta m-2 hover:bg-sky-700 w-32"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Yes
           </button>
-        </div>
-      </div>
+            </div>
+         </div>
+      </div>}
       {/* create new playlist */}
-      <div id={newPlaylist ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw">
+      
+      {newPlaylist && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center">
             <input
               type="text"
               placeholder="give me playlist name"
               onChange={setPlaylistName}
+              className="mr-5 p-2"
               value={playlistName}
             />
-            <div
-              id="closeBtn"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
           </div>
-          <button
-            className="primary-modal-cta"
+           <button
+            className="primary-modal-cta mt-5 w-60"
             onClick={() => setNewPlaylist()}
           >
             Add
           </button>
-        </div>
-      </div>
+         </div>
+      </div>}
 
       {/* add to existing playlists */}
 
-      <div id={playlists ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw ">
-            <h5 className="modal-heading">Your Playlists</h5>
-            <div
-              id="closeBtn"
-              className="modal-heading"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+       {playlists && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center mb-5">
+            <h1 className="text-lg mr-5">Your Playlists</h1>
+          <button onClick={() => dispatchPlaylist({ type: "closeModal" })}> <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  </button> 
           </div>
           <div>
             {exisitngPlaylists.length !== 0
@@ -414,22 +402,21 @@ export default function PlayVideo() {
                     onClick={() =>
                       setToExistingPlaylist(playlist, streamingVideo)
                     }
-                    className="playlist-title"
+                    className="border-solid border-2 border-indigo-600 text-center cursor-pointer hover:bg-sky-700 saved-playlist font-bold mb-2"
                   >
                     {playlist.title}
                   </div>
                 ))
               : "No playlists found create new"}
           </div>
-
-          <button
-            className="primary-modal-cta"
+           <button
+            className="primary-modal-cta mt-5"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Create New playlist
           </button>
-        </div>
-      </div>
+         </div>
+      </div>}
     </div>
   );
 }
