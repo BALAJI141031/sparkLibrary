@@ -342,7 +342,7 @@ export default function PlayVideo() {
           ))}
         </div>
       </div>
-       {playlistModal && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+       {playlistModal && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  min-h-full">
         <div className="bg-gray-200  p-10 rounded-lg "> 
           <div className="flex  justify-between items-center">
             <h2 className="font-bold mr-5 ">Do You Want to create New Playlist</h2>  
@@ -366,7 +366,7 @@ export default function PlayVideo() {
       </div>}
       {/* create new playlist */}
       
-      {newPlaylist && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+      {newPlaylist && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  min-h-full">
         <div className="bg-gray-200  p-10 rounded-lg "> 
           <div className="flex  justify-between items-center">
             <input
@@ -389,7 +389,7 @@ export default function PlayVideo() {
 
       {/* add to existing playlists */}
 
-       {playlists && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  ">
+       {playlists && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center min-h-screen ">
         <div className="bg-gray-200  p-10 rounded-lg "> 
           <div className="flex  justify-between items-center mb-5">
             <h1 className="text-lg mr-5">Your Playlists</h1>
