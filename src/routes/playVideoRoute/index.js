@@ -7,7 +7,6 @@ import {
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
-  useIsVideoLiked,
   useSnackbar,
   useAuth
 } from "../../customHooks";
@@ -35,7 +34,7 @@ export default function PlayVideo() {
   const [playlistName, setNewPlaylistName] = useState("");
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
   const { filteredVideos } = useVideoListing();
-  const { WatchLater, liked, dispatchAnalytics } = useVideoAnalytics();
+  const {liked, dispatchAnalytics } = useVideoAnalytics();
   const {isLoggedIn}=useAuth()
 
   useEffect(() => {
@@ -109,21 +108,6 @@ export default function PlayVideo() {
         });
         hideSnackbar(setSnackbar);
       }
-
-      // if (!WatchLater) {
-      // } else {
-      //   setSnackbar({
-      //     ...snackbar,
-      //     status: true,
-      //     text: "Already Added To Watch Later!",
-      //     type: "warn-toast",
-      //   });
-      //   hideSnackbar(setSnackbar);
-      //   // const deleteWatchLaterRes = await privateDeleteRequest(
-      //   //   `/api/user/watchlater/${video._id}`
-      //   // );
-      //   // dispatchAnalytics({ type: "watchLater", payload: false });
-      // }
     } catch (e) {
       console.error(e);
     }

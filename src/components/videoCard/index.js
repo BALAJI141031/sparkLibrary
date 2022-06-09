@@ -10,7 +10,7 @@ import { usePlayVideo, useVideoAnalytics } from "../../customHooks";
 import { privateDeleteRequest, privateGetRequest } from "../../serverCalls";
 function VideoCard(props) {
   const { video, anlyticCategory, setUi, id: playlistId } = props;
-  const { setStreamingVideo, streamingVideo } = usePlayVideo();
+  const { setStreamingVideo} = usePlayVideo();
   const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import { Video, VideoCard, HeroBanner } from "../../components";
 import { publicGetRequest } from "../../serverCalls";
-import { useNavigate, usePlayVideo } from "../../customHooks";
+import { useNavigate} from "../../customHooks";
 function LandingRoute() {
   const navigate = useNavigate();
   const [{ mostStreamedVideos, featuredCategories }, setHomepageVideos] =

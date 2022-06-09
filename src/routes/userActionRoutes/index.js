@@ -160,7 +160,6 @@ function MyPlaylist(params) {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
-  const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 
   useEffect(() => {
