@@ -1,3 +1,26 @@
-## Video Library Backend
+## Spark library
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
+Tech-
+- **React.js**
+**Functionalities**-
+-landing page with categories
+- Playlist
+- Filter by category
+- Authentication
+- toast
+
+1. Authentication
+   - User Login
+   - User Signup
+
+2. Playlist management
+   - Create new playlist
+   - Add or remove video in playlist
+   - Delete entire playlist
+3. single video page with recomendations
+
+4. watch later videos
+
+
+React- Reducer+Context, Router
+
