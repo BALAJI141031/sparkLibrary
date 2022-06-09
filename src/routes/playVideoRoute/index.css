@@ -144,3 +144,7 @@
     }
 
 }
+
+.saved-playlist:hover{
+    color:var(--pale-white)
+}

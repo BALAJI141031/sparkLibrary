@@ -1,41 +1,39 @@
 import "./index.css";
 
-import { Video, VideoCard } from "../../components";
-import { hideSnackbar } from "../../components/snackbar";
+import { Video, VideoCard } from "components";
+import { hideSnackbar } from "components/snackbar";
 import {
   useVideoListing,
   usePlayVideo,
   useVideoAnalytics,
   usePlaylists,
-  useIsVideoLiked,
   useSnackbar,
   useAuth
-} from "../../customHooks";
+} from "customHooks";
 import {
   privatePostRequest,
   privateDeleteRequest,
   privateGetRequest,
   createPlaylistReq,
-} from "../../serverCalls";
+} from "serverCalls";
 import {
   BsHandThumbsUpFill,
   BsHandThumbsUp,
   MdOutlineWatchLater,
   CgPlayListAdd,
   FaRegBell,
-} from "../../icons";
+} from "icons";
 import { useEffect, useState } from "react";
 
 export default function PlayVideo() {
   const { snackbar, setSnackbar } = useSnackbar();
   const { newPlaylist, playlistModal, playlists, dispatchPlaylist } =
     usePlaylists();
-
   const [exisitngPlaylists, setExistingPlaylists] = useState([]);
   const [playlistName, setNewPlaylistName] = useState("");
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
   const { filteredVideos } = useVideoListing();
-  const { WatchLater, liked, dispatchAnalytics } = useVideoAnalytics();
+  const {liked, dispatchAnalytics } = useVideoAnalytics();
   const {isLoggedIn}=useAuth()
 
   useEffect(() => {
@@ -44,7 +42,13 @@ export default function PlayVideo() {
         await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -109,23 +113,14 @@ export default function PlayVideo() {
         });
         hideSnackbar(setSnackbar);
       }
-
-      // if (!WatchLater) {
-      // } else {
-      //   setSnackbar({
-      //     ...snackbar,
-      //     status: true,
-      //     text: "Already Added To Watch Later!",
-      //     type: "warn-toast",
-      //   });
-      //   hideSnackbar(setSnackbar);
-      //   // const deleteWatchLaterRes = await privateDeleteRequest(
-      //   //   `/api/user/watchlater/${video._id}`
-      //   // );
-      //   // dispatchAnalytics({ type: "watchLater", payload: false });
-      // }
     } catch (e) {
-      console.error(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -151,7 +146,13 @@ export default function PlayVideo() {
       }
      
     } catch (e) {
-      console.error(e);
+     setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -220,7 +221,13 @@ export default function PlayVideo() {
         setNewPlaylistName("")
 
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   };
@@ -250,7 +257,13 @@ export default function PlayVideo() {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -342,70 +355,58 @@ export default function PlayVideo() {
           ))}
         </div>
       </div>
-      <div id={playlistModal ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw">
-            <p>Do You want to create New Playlist</p>
-            <div
-              id="closeBtn"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+       {playlistModal && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  min-h-full">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center">
+            <h2 className="font-bold mr-5 ">Do You Want to create New Playlist</h2>  
+           <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={() => dispatchPlaylist({ type: "closeModal" })}><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg> 
           </div>
+          <div className="flex center-items">
           <button
-            className="primary-modal-cta"
+            className="primary-modal-cta m-2 hover:bg-sky-700 w-32"
             onClick={() => getExistingPlaylists()}
           >
             NO
           </button>
-          <button
-            className="primary-modal-cta"
+            <button
+            className="primary-modal-cta m-2 hover:bg-sky-700 w-32"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Yes
           </button>
-        </div>
-      </div>
+            </div>
+         </div>
+      </div>}
       {/* create new playlist */}
-      <div id={newPlaylist ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw">
+      
+      {newPlaylist && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center  min-h-full">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center">
             <input
               type="text"
               placeholder="give me playlist name"
               onChange={setPlaylistName}
+              className="mr-5 p-2"
               value={playlistName}
             />
-            <div
-              id="closeBtn"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+            <svg onClick={() => dispatchPlaylist({ type: "closeModal" })} class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  
           </div>
-          <button
-            className="primary-modal-cta"
+           <center><button
+            className="primary-modal-cta mt-5 w-60"
             onClick={() => setNewPlaylist()}
           >
             Add
-          </button>
-        </div>
-      </div>
+          </button></center>
+         </div>
+      </div>}
 
       {/* add to existing playlists */}
 
-      <div id={playlists ? "show-modal" : "hide-modal"}>
-        <div id="modal-content">
-          <div className="flex-H-space-bw ">
-            <h5 className="modal-heading">Your Playlists</h5>
-            <div
-              id="closeBtn"
-              className="modal-heading"
-              onClick={() => dispatchPlaylist({ type: "closeModal" })}
-            >
-              ×
-            </div>
+       {playlists && <div className="bg-black bg-opacity-50 absolute z-99 inset-0 flex justify-center items-center min-h-screen ">
+        <div className="bg-gray-200  p-10 rounded-lg "> 
+          <div className="flex  justify-between items-center mb-5">
+            <h1 className="text-lg mr-5">Your Playlists</h1>
+           <svg  onClick={() => dispatchPlaylist({ type: "closeModal" })} class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" ></path></svg>  
           </div>
           <div>
             {exisitngPlaylists.length !== 0
@@ -414,22 +415,21 @@ export default function PlayVideo() {
                     onClick={() =>
                       setToExistingPlaylist(playlist, streamingVideo)
                     }
-                    className="playlist-title"
+                    className="border-solid border-2 border-indigo-600 text-center cursor-pointer hover:bg-sky-700 saved-playlist font-bold mb-2"
                   >
                     {playlist.title}
                   </div>
                 ))
               : "No playlists found create new"}
           </div>
-
-          <button
-            className="primary-modal-cta"
+           <center><button
+            className="primary-modal-cta mt-5"
             onClick={() => dispatchPlaylist({ type: "newPlaylist" })}
           >
             Create New playlist
-          </button>
-        </div>
-      </div>
+          </button></center>
+         </div>
+      </div>}
     </div>
   );
 }

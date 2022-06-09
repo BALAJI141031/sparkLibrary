@@ -1,14 +1,17 @@
 import "./index.css";
-import { VideoCard } from "../../components/index";
+import { VideoCard } from "components/index";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { publicGetRequest, privateGetRequest } from "../../serverCalls";
+import { publicGetRequest, privateGetRequest } from "serverCalls";
+  import { hideSnackbar } from "components/snackbar";
+
 import {
   useVideoListing,
   useNavigate,
   usePlayVideo,
   useVideoAnalytics,
-} from "../../customHooks";
+  useSnackbar
+} from "customHooks";
 
 const categoryList = [
   "All",
@@ -22,10 +25,11 @@ const categoryList = [
 ];
 
 export default function VideoListingRoute() {
+
   const navigate = useNavigate();
   const { country } = useParams();
   const { dispatchAnalytics } = useVideoAnalytics();
-
+  const { snackbar, setSnackbar } = useSnackbar();
   const { dispatchCountry, filteredVideos, videos } = useVideoListing();
   const { setStreamingVideo } = usePlayVideo();
 
@@ -48,7 +52,13 @@ export default function VideoListingRoute() {
         const response = await publicGetRequest("/api/videos");
         dispatchCountry({ type: country, payload: response.data.videos });
       } catch (e) {
-        console.log(e);
+       setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -73,7 +83,13 @@ export default function VideoListingRoute() {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
     navigate("/play-videos");
   };

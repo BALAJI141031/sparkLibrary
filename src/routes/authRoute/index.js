@@ -59,8 +59,8 @@ function Login() {
         emailInput.current.value = "";
         passwordInput.current.value = "";
         setTestCredentials({
-          tesetEmail: "adarshbalika@gmail.com",
-          testPassword: "adarshBalika1234",
+          tesetEmail: "balajinarayana@gmail.com",
+          testPassword: "balajinarayana1234",
         });
         if (e.response.status === 401) {
           setSnackbar({
@@ -148,8 +148,8 @@ function Login() {
         <div
           onClick={() =>
             setTestCredentials({
-              tesetEmail: "adarshbalika@gmail.com",
-              testPassword: "adarshBalika1234",
+             tesetEmail: "balajinarayana@gmail.com",
+          testPassword: "balajinarayana1234",
             })
           }
         >

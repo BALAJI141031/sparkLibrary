@@ -1,18 +1,21 @@
 import "./index.css";
-import { VideoCard } from "../../components";
+import { VideoCard } from "components";
 
 import { useEffect, useState } from "react";
+import { hideSnackbar } from "components/snackbar";
 import {
   useNavigate,
   usePlayVideo,
   useVideoAnalytics,
-} from "../../customHooks";
-import { privateGetRequest, privateDeleteRequest } from "../../serverCalls";
+  useSnackbar,
+} from "customHooks";
+import { privateGetRequest, privateDeleteRequest } from "serverCalls";
 import { useParams } from "react-router-dom";
-import { AiOutlineDelete } from "../../icons";
+import { AiOutlineDelete } from "icons";
 
 function WatchLater() {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+  const { snackbar, setSnackbar } = useSnackbar();
   // get me watch later videos from db
   useEffect(() => {
     (async () => {
@@ -20,7 +23,13 @@ function WatchLater() {
         const response = await privateGetRequest("/api/user/watchlater");
         setWatchLaterVideos(response.data.watchlater);
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -51,13 +60,20 @@ function WatchLater() {
 
 function History(params) {
   const [history, setHistory] = useState([]);
+  const { snackbar, setSnackbar } = useSnackbar();
   useEffect(() => {
     (async () => {
       try {
         const response = await privateGetRequest("/api/user/history");
         setHistory(response.data.history);
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -68,7 +84,13 @@ function History(params) {
       const response = await privateDeleteRequest("/api/user/history/all");
       setHistory(response.data.history);
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -102,6 +124,7 @@ function History(params) {
 }
 
 function MyPlaylists(params) {
+  const { snackbar, setSnackbar } = useSnackbar();
   const [playlists, setPlaylists] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -123,7 +146,13 @@ function MyPlaylists(params) {
       );
       setPlaylists(deletePlaylist.data.playlists);
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -157,10 +186,10 @@ function MyPlaylists(params) {
 }
 
 function MyPlaylist(params) {
+  const { snackbar, setSnackbar } = useSnackbar();
   const { id } = useParams();
   const [playlist, setPlaylist] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
-  const { dispatchAnalytics } = useVideoAnalytics();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -172,7 +201,13 @@ function MyPlaylist(params) {
         );
         setPlaylist([...userRequirePlaylist[0].videos]);
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -191,7 +226,13 @@ function MyPlaylist(params) {
       );
       navigate("/my-playlists");
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -221,6 +262,7 @@ function MyPlaylist(params) {
 }
 
 function LikedVideos(params) {
+  const { snackbar, setSnackbar } = useSnackbar();
   const [likedVideos, setLikedVideos] = useState([]);
   const { setStreamingVideo } = usePlayVideo();
   const { dispatchAnalytics } = useVideoAnalytics();

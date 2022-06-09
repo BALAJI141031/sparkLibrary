@@ -6,7 +6,7 @@ const publicGetRequest = async (path) => {
     const response = await axios.get(path);
     return response;
   } catch (e) {
-    console.error(e);
+    throw e;
   }
 };
 
@@ -29,7 +29,7 @@ const privateGetRequest = async (path) => {
     });
     return response;
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 };
 
@@ -77,7 +77,7 @@ const createPlaylistReq = async (path, playlist) => {
     );
     return response;
   } catch (e) {
-    console.error(e);
+   throw e;
   }
 };
 

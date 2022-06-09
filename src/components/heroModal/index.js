@@ -1,6 +1,5 @@
 import "./index.css";
 import { useNavigate } from "../../customHooks";
-import { GiWindSlap } from "../../icons";
 
 function HeroBanner({ hero, category }) {
   const navigate = useNavigate();
