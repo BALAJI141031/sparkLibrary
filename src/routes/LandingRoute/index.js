@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "./index.css";
-import { Video, VideoCard, HeroBanner } from "../../components";
-import { publicGetRequest } from "../../serverCalls";
-import { useNavigate} from "../../customHooks";
+import { Video, VideoCard, HeroBanner } from "components";
+import { publicGetRequest } from "serverCalls";
+import { useNavigate,useSnackbar } from "customHooks";
+import { hideSnackbar } from "components/snackbar";
 function LandingRoute() {
   const navigate = useNavigate();
+  const { snackbar, setSnackbar } = useSnackbar();
   const [{ mostStreamedVideos, featuredCategories }, setHomepageVideos] =
     useState({
       featuredCategories: [],
@@ -27,7 +29,13 @@ function LandingRoute() {
           );
         setHomepageVideos({ featuredCategories, mostStreamedVideos });
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error While fetching Data!",
+                type: "warn-toast",
+              });
+         hideSnackbar(setSnackbar);
       }
     })();
   }, []);

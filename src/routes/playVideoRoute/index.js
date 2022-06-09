@@ -1,7 +1,7 @@
 import "./index.css";
 
-import { Video, VideoCard } from "../../components";
-import { hideSnackbar } from "../../components/snackbar";
+import { Video, VideoCard } from "components";
+import { hideSnackbar } from "components/snackbar";
 import {
   useVideoListing,
   usePlayVideo,
@@ -9,27 +9,26 @@ import {
   usePlaylists,
   useSnackbar,
   useAuth
-} from "../../customHooks";
+} from "customHooks";
 import {
   privatePostRequest,
   privateDeleteRequest,
   privateGetRequest,
   createPlaylistReq,
-} from "../../serverCalls";
+} from "serverCalls";
 import {
   BsHandThumbsUpFill,
   BsHandThumbsUp,
   MdOutlineWatchLater,
   CgPlayListAdd,
   FaRegBell,
-} from "../../icons";
+} from "icons";
 import { useEffect, useState } from "react";
 
 export default function PlayVideo() {
   const { snackbar, setSnackbar } = useSnackbar();
   const { newPlaylist, playlistModal, playlists, dispatchPlaylist } =
     usePlaylists();
-
   const [exisitngPlaylists, setExistingPlaylists] = useState([]);
   const [playlistName, setNewPlaylistName] = useState("");
   const { setStreamingVideo, streamingVideo } = usePlayVideo();
@@ -43,7 +42,13 @@ export default function PlayVideo() {
         await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -109,7 +114,13 @@ export default function PlayVideo() {
         hideSnackbar(setSnackbar);
       }
     } catch (e) {
-      console.error(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -135,7 +146,13 @@ export default function PlayVideo() {
       }
      
     } catch (e) {
-      console.error(e);
+     setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 
@@ -204,7 +221,13 @@ export default function PlayVideo() {
         setNewPlaylistName("")
 
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   };
@@ -234,7 +257,13 @@ export default function PlayVideo() {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
     }
   };
 

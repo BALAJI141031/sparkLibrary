@@ -4,14 +4,16 @@ import {
   BsHandThumbsDownFill,
   MdDelete,
   MdRemoveCircle,
-} from "../../icons";
+} from "icons";
 import { useNavigate } from "react-router-dom";
-import { usePlayVideo, useVideoAnalytics } from "../../customHooks";
-import { privateDeleteRequest, privateGetRequest } from "../../serverCalls";
+import { hideSnackbar } from "components/snackbar";
+import { usePlayVideo, useVideoAnalytics,useSnackbar } from "customHooks";
+import { privateDeleteRequest, privateGetRequest } from "serverCalls";
 function VideoCard(props) {
   const { video, anlyticCategory, setUi, id: playlistId } = props;
   const { setStreamingVideo} = usePlayVideo();
   const { dispatchAnalytics } = useVideoAnalytics();
+  const { snackbar, setSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
   const { title, thumbnailImg, creator, listens, releasedDate, GIF } = video;
@@ -58,7 +60,13 @@ function VideoCard(props) {
         let data = "data";
         setUi([...response[data][categoryToDelete]]);
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error While fetching Data!",
+                type: "warn-toast",
+              });
+         hideSnackbar(setSnackbar);
       }
     } else {
       try {
@@ -66,7 +74,13 @@ function VideoCard(props) {
         console.log(response, "deletedd playlists");
         setUi(response.data.playlist.videos);
       } catch (e) {
-        console.log(e);
+        setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error While fetching Data!",
+                type: "warn-toast",
+              });
+         hideSnackbar(setSnackbar);
       }
     }
   };
@@ -93,7 +107,13 @@ function VideoCard(props) {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      console.log(e);
+      setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Unexpected Error While fetching Data!",
+                type: "warn-toast",
+              });
+         hideSnackbar(setSnackbar);
     }
   };
 
