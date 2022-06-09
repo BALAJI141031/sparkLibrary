@@ -148,8 +148,8 @@ function Login() {
         <div
           onClick={() =>
             setTestCredentials({
-              tesetEmail: "adarshbalika@gmail.com",
-              testPassword: "adarshBalika1234",
+             tesetEmail: "balajinarayana@gmail.com",
+          testPassword: "balajinarayana1234",
             })
           }
         >
