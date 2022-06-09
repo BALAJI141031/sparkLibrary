@@ -1,0 +1,20 @@
+:root{
+    --full-width:100%;
+    --full-height:100%;
+}
+
+.video-div {
+    width:100%; 
+}
+.video-div > iframe{
+    height:50vh;
+    width:100%; 
+}
+
+@media screen and (min-width:768px) {
+    .video-div > iframe{
+        height:70vh;
+        width:100%;
+        
+    }
+}

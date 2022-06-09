@@ -1,3 +1,45 @@
+:root{
+    --primary-color:#FF004D;
+    --background-color:#16003B;
+    --cta-font-color:#DBD8E3;
+    --shadow:rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    --modal-background-color:rgba(0,0.1,0.1,0.2)
+}
+
+.hero-icon{
+    color:var(--primary-color);  
+}
+
+.primary-modal-cta{
+    background-color: var(--background-color);
+    color: var(--cta-font-color);
+    font-weight:bolder ;
+    padding:10px;
+    border-style: none;
+
+}
+
+.primary-cta{
+   background-color: var(--primary-color);
+    color: var(--cta-font-color);
+    font-weight:bolder ;
+    padding:10px;
+    border-style: none;
+}
+
+.secondary-cta{
+    background-color: palegreen;
+}
+
+#cta{
+    text-align: center;
+    width: 100%;
+    border-style: none;
+    padding: 0.3em;
+    font-size: 1rem;
+}
+
+
 .App {
   text-align: center;
 }
@@ -6,6 +48,8 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -48,4 +92,14 @@
   color: #d9d9d9;
   font-size: 1.2rem;
   margin: 1rem;
+}
+
+
+.navbar-div{
+
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background-color: #16003B;
+
 }
