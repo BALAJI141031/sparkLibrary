@@ -1,26 +1,28 @@
 ## Spark library
 
+
 Tech-
-- **React.js**
-**Functionalities**-
--landing page with categories
+- React
+
+Functionalities-
+
+- landing page with categories
 - Playlist
 - Filter by category
 - Authentication
-- toast
+- toast, 
 
 1. Authentication
+
    - User Login
    - User Signup
 
 2. Playlist management
+
    - Create new playlist
    - Add or remove video in playlist
    - Delete entire playlist
-3. single video page with recomendations
+3. watch later videos
+4. like videos
 
-4. watch later videos
-
-
-React- Reducer+Context, Router
-
+React- Reducer+Context, Router, 
