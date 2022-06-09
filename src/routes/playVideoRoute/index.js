@@ -39,9 +39,10 @@ export default function PlayVideo() {
   useEffect(() => {
     (async () => {
       try {
-        await privatePostRequest("/api/user/history", streamingVideo);
+        const historyResponse=await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
+        console.log("problem might be here111",e)
         setSnackbar({
                 ...snackbar,
                 status: true,

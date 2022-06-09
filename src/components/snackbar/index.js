@@ -5,7 +5,6 @@ const showSnackbar = (payload) => {
   return (
     <div class="snackbar" id={`${payload.type}`}>
       <p>{payload.text}</p>
-      {/* <p>checkin</p> */}
     </div>
   );
 };
