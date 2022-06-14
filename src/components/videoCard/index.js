@@ -71,7 +71,6 @@ function VideoCard(props) {
     } else {
       try {
         let response = await privateDeleteRequest(path);
-        console.log(response, "deletedd playlists");
         setUi(response.data.playlist.videos);
       } catch (e) {
         setSnackbar({
@@ -99,7 +98,6 @@ function VideoCard(props) {
             dispatchAnalytics({ type: "liked", payload: true });
             break;
           } else {
-            console.log("elseblock");
             flag++;
           }
         }
@@ -107,13 +105,6 @@ function VideoCard(props) {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      setSnackbar({
-                ...snackbar,
-                status: true,
-                text: "Unexpected Error While fetching Data!",
-                type: "warn-toast",
-              });
-         hideSnackbar(setSnackbar);
     }
   };
 

@@ -48,7 +48,6 @@ export default function PlayVideo() {
 
   // watch later
   const toggleWatchLaterVideo = async (video) => {
-   
     try {
       if (isLoggedIn) {
         const watchLaterVideos = await privateGetRequest("/api/user/watchlater");
