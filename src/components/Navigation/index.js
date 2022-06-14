@@ -38,7 +38,9 @@ function Navbar() {
       <Link to="/">
         <sapn class="span-style">SL</sapn>
       </Link>
-      <div className="searchbar-div">
+
+      {/* will implement soon--search */}
+      {/* <div className="searchbar-div">
         <input
           className="search-bar"
           type="search"
@@ -47,7 +49,7 @@ function Navbar() {
         <button className="search-icon">
           <BiSearchAlt2 />
         </button>
-      </div>
+      </div> */}
 
       <div>
         {sidebar ? (
