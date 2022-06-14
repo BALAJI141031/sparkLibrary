@@ -42,14 +42,6 @@ export default function PlayVideo() {
         const historyResponse=await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
-        console.log("problem might be here111",e)
-        setSnackbar({
-                ...snackbar,
-                status: true,
-                text: "Unexpected Error!",
-                type: "warn-toast",
-              });
-              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
@@ -235,6 +227,7 @@ export default function PlayVideo() {
 
   // playing recomended video
   const playRecomendedVideo = async (video) => {
+    console.log("click happend")
     setStreamingVideo(video);
     window.scroll({
       top: 0,
@@ -326,15 +319,13 @@ export default function PlayVideo() {
               <p className="heading-m">10.5M subscribers</p>
             </div>
           </div>
-          <div className="flex-H-center-V subscription-div">
-            <button className="cta">Subscribe</button>
-            <FaRegBell className="icon-lg" />
-          </div>
         </div>
-        <div className="comments-div">
+
+        {/* comments feature,will implement soon  */}
+        {/* <div className="comments-div">
           <h5 className="heading-m">Comments</h5>
           <div className="flex-H-center-V ">
-            <div className="profile-pic">{/* <img src="" /> */}SP</div>
+            <div className="profile-pic">SP</div>
             <div>
               <input
                 type="text"
@@ -343,7 +334,8 @@ export default function PlayVideo() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
+
       </div>
       <div>
         <h2 className="heading-m">Recomended Videos</h2>

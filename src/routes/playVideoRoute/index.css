@@ -130,8 +130,8 @@
 
     .play-video-section{
         display: grid;
-        grid-template-columns:max-content 0.6fr;
-         padding-top:5%
+        grid-template-columns:1fr 0.2fr;
+        padding-top:5%
     }
 
     .recomended-videos{
