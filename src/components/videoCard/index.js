@@ -84,7 +84,7 @@ function VideoCard(props) {
     }
   };
 
-  // play ,ost streamed video
+  // play most streamed video
 
   const playMostStreamedVideo = async () => {
     setStreamingVideo(video);
@@ -105,6 +105,7 @@ function VideoCard(props) {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
+      console.log(e,"video card")
     }
   };
 

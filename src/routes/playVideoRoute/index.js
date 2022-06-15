@@ -39,15 +39,17 @@ export default function PlayVideo() {
   useEffect(() => {
     (async () => {
       try {
-        const historyResponse=await privatePostRequest("/api/user/history", streamingVideo);
+        const historyResponse= await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
+        // 409 history exits
       }
     })();
   }, []);
 
   // watch later
   const toggleWatchLaterVideo = async (video) => {
+   
     try {
       if (isLoggedIn) {
         const watchLaterVideos = await privateGetRequest("/api/user/watchlater");
@@ -216,7 +218,7 @@ export default function PlayVideo() {
         setSnackbar({
                 ...snackbar,
                 status: true,
-                text: "Unexpected Error!",
+                text: "Unexpected Error! check 1",
                 type: "warn-toast",
               });
               hideSnackbar(setSnackbar);
@@ -226,7 +228,6 @@ export default function PlayVideo() {
 
   // playing recomended video
   const playRecomendedVideo = async (video) => {
-    console.log("click happend")
     setStreamingVideo(video);
     window.scroll({
       top: 0,
@@ -250,10 +251,11 @@ export default function PlayVideo() {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
+      console.log(e,"while playing recomended video")
       setSnackbar({
                 ...snackbar,
                 status: true,
-                text: "Unexpected Error!",
+                text: "Unexpected Error! check 2",
                 type: "warn-toast",
               });
               hideSnackbar(setSnackbar);
