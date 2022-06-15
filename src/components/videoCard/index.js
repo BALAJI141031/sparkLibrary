@@ -105,7 +105,7 @@ function VideoCard(props) {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      console.log(e,"video card")
+      // console.log(e,"video card") nothing to handle
     }
   };
 

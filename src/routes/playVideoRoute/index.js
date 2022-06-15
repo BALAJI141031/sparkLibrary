@@ -42,7 +42,7 @@ export default function PlayVideo() {
         const historyResponse= await privatePostRequest("/api/user/history", streamingVideo);
         dispatchAnalytics({ type: "history", payload: true });
       } catch (e) {
-        // 409 history exits
+        // 409 history exits nothing to handle
       }
     })();
   }, []);

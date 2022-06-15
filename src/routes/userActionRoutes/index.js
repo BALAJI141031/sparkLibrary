@@ -133,7 +133,13 @@ function MyPlaylists(params) {
         const response = await privateGetRequest("/api/user/playlists");
         setPlaylists([...response.data.playlists]);
       } catch (e) {
-        console.log(e);
+         setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Empty!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, [playlists]);
@@ -274,7 +280,13 @@ function LikedVideos(params) {
         const response = await privateGetRequest("/api/user/likes");
         setLikedVideos(response.data.likes);
       } catch (e) {
-        console.log(e);
+         setSnackbar({
+                ...snackbar,
+                status: true,
+                text: "Empty!",
+                type: "warn-toast",
+              });
+              hideSnackbar(setSnackbar);
       }
     })();
   }, []);
