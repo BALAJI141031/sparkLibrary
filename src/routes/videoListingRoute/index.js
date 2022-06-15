@@ -68,6 +68,7 @@ export default function VideoListingRoute() {
     setStreamingVideo(video);
     try {
       const likedVideos = await privateGetRequest("/api/user/likes");
+      
       let flag = 0;
       if (likedVideos.data.likes.length !== 0) {
         for (let i = 0; i < likedVideos.data.likes.length; i++) {
@@ -83,13 +84,6 @@ export default function VideoListingRoute() {
           dispatchAnalytics({ type: "liked", payload: false });
       }
     } catch (e) {
-      setSnackbar({
-                ...snackbar,
-                status: true,
-                text: "Unexpected Error!",
-                type: "warn-toast",
-              });
-              hideSnackbar(setSnackbar);
     }
     navigate("/play-videos");
   };
