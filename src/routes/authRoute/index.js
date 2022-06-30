@@ -135,13 +135,6 @@ function Login() {
             <p className="style-error">Please Provide password</p>
           )}
         </div>
-        <div className="flex-H-space-bw">
-          <div className="flex-H-center-V">
-            <input type="checkbox" className="checkbox" />
-            <p>Remember Me</p>
-          </div>
-          <p>Forgot Your Password</p>
-        </div>
         <button className="primary-cta" id="cta">
           Login
         </button>
@@ -181,7 +174,6 @@ function Signup() {
     password: "",
     confirmPassword: "",
     displayname: "",
-    termsAndConditions: false,
   };
   const [detials, setDetials] = useState(intialDetials);
   const submitSignupForm = async (e) => {
@@ -192,10 +184,44 @@ function Signup() {
       email,
       password,
       confirmPassword,
-      termsAndConditions,
+      displayname,
     } = detials;
 
-    if (password.length < 6) {
+    if(firstName===""){
+      setSnackbar({
+        ...snackbar,
+        status: true,
+        text: "Please Provide FirstName!",
+        type: "warn-toast",
+      });
+      hideSnackbar(setSnackbar);
+    }
+    else if (lastName==="") {
+      setSnackbar({
+        ...snackbar,
+        status: true,
+        text: "Please Provide LastName",
+        type: "warn-toast",
+      });
+      hideSnackbar(setSnackbar);
+    }else if (displayname==="") {
+      setSnackbar({
+        ...snackbar,
+        status: true,
+        text: "Please Provide username",
+        type: "warn-toast",
+      });
+      hideSnackbar(setSnackbar);
+    }  else if (email==="") {
+      setSnackbar({
+        ...snackbar,
+        status: true,
+        text: "Please Provide Email",
+        type: "warn-toast",
+      });
+      hideSnackbar(setSnackbar);
+    }
+    else if (password.length < 6) {
       setSnackbar({
         ...snackbar,
         status: true,
@@ -208,7 +234,7 @@ function Signup() {
         password: "",
         confirmPassword: "",
       }));
-    } else if (password.search(/\d/) === -1) {
+    }  else if (password.search(/\d/) === -1) {
       setSnackbar({
         ...snackbar,
         status: true,
@@ -260,15 +286,7 @@ function Signup() {
         type: "warn-toast",
       });
       hideSnackbar(setSnackbar);
-    } else if (!termsAndConditions) {
-      setSnackbar({
-        ...snackbar,
-        status: true,
-        text: "Please Select Termas&Condition!",
-        type: "warn-toast",
-      });
-      hideSnackbar(setSnackbar);
-    } else {
+    }else {
       try {
         const signupResponse = await publicPostRequest("/api/auth/signup", {
           firstName: detials.firstName,
@@ -298,7 +316,6 @@ function Signup() {
           hideSnackbar(setSnackbar);
           setDetials(intialDetials);
         } else {
-          // toast.error("Unexpected error");
           setSnackbar({
             ...snackbar,
             status: true,
@@ -312,11 +329,6 @@ function Signup() {
   };
 
   const setDetialsHandler = (e) => {
-    console.log(
-      e.target.name,
-      "why password is getting as an empty",
-      e.target.value
-    );
     if (e.target.name !== "termsAndConditions")
       setDetials((prevCredentials) => ({
         ...prevCredentials,
@@ -332,7 +344,7 @@ function Signup() {
   return (
     <div className="auth-form">
       <h1>
-        Spark Wind <GiWindSlap className="hero-icon" />
+        Spark Library <GiWindSlap className="hero-icon" />
       </h1>
       <form onSubmit={submitSignupForm}>
         <center>
@@ -392,17 +404,7 @@ function Signup() {
             onChange={setDetialsHandler}
           />
         </div>
-
-        <div className="flex-H-center-V">
-          <input
-            type="checkbox"
-            className="checkbox"
-            name="termsAndConditions"
-            onChange={setDetialsHandler}
-          />
-          <p>I accept all terms and conditions</p>
-        </div>
-        <button className="primary-cta" id="cta">
+        <button className="primary-cta cursor-pointer" id="cta">
           Signup
         </button>
         <NavLink to="/login">

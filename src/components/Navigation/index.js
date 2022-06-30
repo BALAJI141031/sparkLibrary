@@ -54,11 +54,11 @@ function Navbar() {
       <div>
         {sidebar ? (
           <div class="buger-div" onClick={toggleSidebar}>
-            <AiOutlineClose id="close-icon" />
+            <AiOutlineClose id="close-icon" className="cursor-pointer"/>
           </div>
         ) : (
           <div class="buger-div" onClick={toggleSidebar}>
-            <GiHamburgerMenu id="menu-icon" />
+            <GiHamburgerMenu id="menu-icon" className="cursor-pointer"/>
           </div>
         )}
       </div>
